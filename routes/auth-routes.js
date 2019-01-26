@@ -2,7 +2,7 @@ const passport = require('passport');
 const {Router} = require('express');
 const router = Router();
 
-const User = require('../models/User');
+const User = require('../Model/User');
 
 router
   .get('/signup', (req, res, next)=>{
