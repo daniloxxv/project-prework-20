@@ -1,9 +1,9 @@
 //User Model
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const passportLocalMongoose =require('passport-local-mongoose');
-
+const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new Schema({
+
   name: {
     type: String,
     required: true
@@ -15,9 +15,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  avatarUrl: {
+    type: String
   }
-},
-  {
+}, {
   timestamps: {
     createdAt: "created_at",
     updatedAt: "updated_at"
