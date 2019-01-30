@@ -8,9 +8,9 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-const passport     = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+const passport     = require('./services/passport')
+const session      = require('express-session')
+const MongoStore   = require('connect-mongo')(session)
 
 var bcrypt;
   try { bcrypt = require('bcrypt'); }
@@ -37,6 +37,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(require('express-session')({
   secret: 'plugin',
   resave: false,

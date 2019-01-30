@@ -8,8 +8,10 @@ authRouter
   .get('/signup', (req, res, next)=>{
     res.render('auth/signup');
   })
-  .post('/signup', (req, res, next)=>{
-    User.register( new User({ username: req.body.username }),
+  .post('/signup', (req, res, next)=>{     
+     console.log(req.body)
+
+    User.register( new User({username: req.body.username,  email: req.body.email }),
     req.body.password,
     function(err, account){
       if(err){
@@ -41,7 +43,9 @@ authRouter
   })
 
   .get('/', (req, res, next)=>{
-    return res.render('index');
+    const user = req.user
+    console.log(user, req.user)
+    res.render('index', {user});
   })
 
 module.exports = authRouter;
