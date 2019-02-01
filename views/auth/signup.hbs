@@ -4,16 +4,18 @@
 <label for="username">Username</label>
 <input type="text" name="username" id="name" class="form-control">
 <small id="usernameHelp" class="form-text text-muted">Only lowercase letters allowed.No spaces.</small>
-
+<small class="form-text text-muted"><span class="error">{{usernameError}}</span></small>
 <br>
 <label for="password">Password</label>
 <input type="password" name="password" id="password" class="form-control">
-<small id="passwordHelp" class="form-text text-muted">6-20 characters, including at least one number and one capital letter{{passwordError}}</small>
+<small id="passwordHelp" class="form-text text-muted">6-20 characters, including at least one number and one capital letter</small>
+<small class="form-text text-muted"><span class="error">{{passwordError}}</span></small>
 
 
 <br>
 <label for="email">E-mail</label>
 <input type="email" name="email" id="email" class="form-control">
+<small class="form-text text-muted"><span class="error">{{emailError}}</span></small>
 <input type="submit" class="formbutton btn btn-primary">
 </form>
 </div>
