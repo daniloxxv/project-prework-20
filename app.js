@@ -71,7 +71,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 
-const router = require('./routes/auth-routes');
+const router = require('./routes/index');
 app.use('/', router)
 
 
