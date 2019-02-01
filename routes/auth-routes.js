@@ -1,10 +1,10 @@
 const passport = require('passport');
 const {Router} = require('express');
-const authRouter = Router();
+const router = Router();
 
 const User = require('../Model/User');
 
-authRouter
+router
   .get('/signup', (req, res, next)=>{
     res.render('auth/signup');
   })
@@ -42,10 +42,12 @@ authRouter
     res.redirect('/login');
   })
 
+/* GET home page */
+
   .get('/', (req, res, next)=>{
     const user = req.user
     console.log(user, req.user)
     res.render('index', {user});
   })
 
-module.exports = authRouter;
+module.exports = router;

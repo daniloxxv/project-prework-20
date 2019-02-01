@@ -1,9 +1,15 @@
-<h2>Login</h2>
+<section class = "formpage">
+<div class = "form form-group"><h2 class="sectiontitle">Login</h2>
 <form action="/login" method="post">
-<label for="username">username</label>
-<input type="text" name="username" id="username">
+<label for="username">Username</label>
+<input type="text" name="username" id="username" class="form-control">
 <br>
-<label for="password">password</label>
-<input type="password" name="password" id="password">
-<input type="submit">
+<label for="password">Password</label>
+<input type="password" name="password" id="password"  class="form-control">
+<small id="passwordHelp" class="form-text text-muted">Forgot your password? Contact <a href="mailto:support@ironhack.com">support@ironhack.com</a> for help.</small>
+
+<input type="submit" class="formbutton btn btn-primary">
 </form>
+</div>
+</section>
+

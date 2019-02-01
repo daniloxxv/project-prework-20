@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
+  margin: 0;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
+
+.logo {
+  height: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+.formpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; }
+
+.form {
+  justify-content: center;
+  align-self: center; }
+
+.sectiontitle {
+  margin-bottom: 2rem; }
+
+.formbutton {
+  margin-top: 1rem; }
+
+.nav-item {
+  margin-left: 1.5rem; }
+
+.home {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.main {
+  justify-content: center;
+  align-self: center; }
 
 /*# sourceMappingURL=style.css.map */

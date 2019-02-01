@@ -1,25 +1,9 @@
-<div class="entry">
-      <ul id='navb'>
-      <li>
-        <a href="/">home</a>
-      </li>
-      <li>
-        <a href="/login">login</a>
-      </li>
-      <li>
-        <a href="/signup">signup</a>
-      </li>
-      <li>
-        <a href="/logout">logout</a>
-      </li>
-      <li>
-        <a href="/private">private</a>
-      </li>
-    </ulid>
-  </nav>
+<section class = "home d-flex">
+  <div class="main">
   {{#if user}}
     <h1>welcome {{user.username}}</h1>
   {{else}}
-    <p>please login or signup</p>
+    <h2>Please login or signup to access the course content</h2>
   {{/if}}
 </div>
+</section>
