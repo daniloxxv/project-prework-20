@@ -1,12 +1,14 @@
 <div id="commentable-container" class="container commentable-container">
   <h1 class="title">
     What is a Distributed Version Control System?
+ 
   </h1>
   <hr>
   <h2>
     A Distributed Version Control System (DVCS) or Version Control System (VCS) is a system that records changes to a file or
     set of files over time so you can recall specific versions later.
   </h2>
+
 
   <p data-section-id="1" class="commentable-section">
     The DVCS usually works together with a Code Hosting Platform, where your team can store your project’s code to share it among
@@ -39,7 +41,9 @@
     understand that, you need to learn what is GitHub.
   </p>
 
-  {{!-- This is the handlebar helper that we registered--}} {{assign 'existingComments' this.coment}}
+  {{!-- This is the handlebar helper that we registered--}} 
+  {{assign 'existingComments' this.data.coment}}
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -51,10 +55,10 @@
   var existingComments = [{{{@root.existingComments}}}];
   //Construimos el objeto del usuario actual
   var currentUsera = {
-    id: `{{this.user.id}}`,
-    avatarUrl: `{{this.user.avatarUrl}}`,
-    authorUrl: `{{this.user.authorUrl}}`,
-    name: `{{this.user.username}}`
+    id: `{{this.data.user.id}}`,
+    avatarUrl: `{{this.data.user.avatarUrl}}`,
+    authorUrl: `{{this.data.user.authorUrl}}`,
+    name: `{{this.data.user.username}}`
   };
 </script>
 <script src="/javascripts/learning.js"></script>
