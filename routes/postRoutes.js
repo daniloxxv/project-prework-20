@@ -15,14 +15,8 @@ router.get("/learning", (req, res, next) => {
         commentas = comments;
         //Foreach to pass the id of each section as string
         commentas.forEach(element => {
-          element._id = element._id.toString();
+          element._id = element._id.toString();       
         });
-      })
-
-      User.findOne({
-      email: user.email
-    })
-      .then(user => {
         const data = {
           user: user,
           coment: commentas
@@ -30,9 +24,16 @@ router.get("/learning", (req, res, next) => {
         //console.log("The data is:", data);
         res.render("learning", { data });
       })
-      .catch(err => {
-        console.log(err);
-      });
+
+     // User.findOne({
+      //email: user.email
+   // })
+     // .then(user => {
+       
+   //   })
+   //   .catch(err => {
+     //   console.log(err);
+      //});
   }else{
 
     res.render("auth/login")
