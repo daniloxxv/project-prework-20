@@ -16,8 +16,11 @@ router.get("/classmates", (req, res, next) => {
 
   const user = req.user;
   const data = { user: user };
-  console.log(user, req.user);
   res.render("classmates", { data });
 });
 
+ router.get("/*", (req, res, next) => {
+
+  res.render("error");
+});
 module.exports = router;

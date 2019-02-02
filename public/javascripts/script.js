@@ -10,8 +10,16 @@ const parts = [{ "text": 'Home', "link": '/' }];
     part ? parts.push({ "text": text, "link": link }): part;
   }
 let breadcrumbs = $('#breadcrumblist')
+let error = $('#error')
+
+if (error.length === 0){
 for (let i = 0; i < parts.length-1; i++){
     breadcrumbs.append(`<li class="breadcrumb-item" aria-current="page"><a href="${parts[i].link}">${parts[i].text}</a></li>`)
   }
   breadcrumbs.append(`<li class="breadcrumb-item active" aria-current="page">${parts.pop().text}</li>`)
+}
+else {
+  breadcrumbs.append(`<li class="breadcrumb-item" aria-current="page">Error 404</li>`)
+  console.log(error)
+}
 })

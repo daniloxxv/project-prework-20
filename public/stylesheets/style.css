@@ -11,7 +11,7 @@ a {
   margin-left: 1rem;
   margin-right: 1rem; }
 
-.formpage, .classmates, .home {
+.formpage, .classmates, .home, #error {
   display: flex;
   justify-content: center;
   align-items: center;
