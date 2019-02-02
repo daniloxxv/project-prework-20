@@ -5,9 +5,9 @@ const User = require("../Model/User");
 //Section  Model
 const Section = require("../Model/Section");
 
-///////////////////////////////////////////////////////////////////////////////Side Comments Routes///////////////////////////////////////////////////////////////////////////////
 router.get("/learning", (req, res, next) => {
   const user = req.user;
+  
   if (user) {
     var commentas = [];
     Section.find()
@@ -18,11 +18,8 @@ router.get("/learning", (req, res, next) => {
           element._id = element._id.toString();
         });
       })
-      .catch(err => {
-        console.log(err);
-      });
 
-    User.findOne({
+      User.findOne({
       email: user.email
     })
       .then(user => {
@@ -36,6 +33,9 @@ router.get("/learning", (req, res, next) => {
       .catch(err => {
         console.log(err);
       });
+  }else{
+
+    res.render("auth/login")
   }
 });
 
@@ -94,7 +94,7 @@ router.post("/comments", (req, res, next) => {
   //if the document is not found, then create a new one, else update comments and push the newComment
   Section.findOneAndUpdate(query, update, options)
     .then(comment => {
-      res.redirect("/learning");
+      res.redirect("/");
     })
     .catch(err => {
       console.log(err);

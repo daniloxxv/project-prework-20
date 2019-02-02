@@ -27,6 +27,10 @@ a {
 .formbutton {
   margin-top: 1rem; }
 
+.navbar-collapse {
+  display: flex;
+  align-items: center; }
+
 .nav-item {
   margin-left: 1.5rem; }
 
@@ -36,5 +40,39 @@ a {
 
 .error {
   color: red; }
+
+#breadcrumblist {
+  justify-content: flex-start;
+  height: 2rem;
+  font-size: 0.9rem; }
+
+.upper {
+  display: flex;
+  height: 2.2rem;
+  justify-content: space-between;
+  background-color: #E9ECEF; }
+
+.progress {
+  height: 2.2rem;
+  min-width: 35rem;
+  max-width: 35rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.progressbg {
+  height: 2.2rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.progress-bar {
+  height: 2.2rem;
+  max-width: 30rem; }
+
+.progresslabel {
+  font-size: 0.9rem;
+  margin-right: 0.5rem; }
 
 /*# sourceMappingURL=style.css.map */

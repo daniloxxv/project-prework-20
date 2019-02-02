@@ -13,6 +13,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/classmates", (req, res, next) => {
+
   const user = req.user;
   const data = { user: user };
   console.log(user, req.user);
