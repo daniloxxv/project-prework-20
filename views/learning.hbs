@@ -43,7 +43,7 @@
 
   {{!-- This is the handlebar helper that we registered--}} 
   {{assign 'existingComments' this.data.coment}}
-  
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -55,10 +55,10 @@
   var existingComments = [{{{@root.existingComments}}}];
   //Construimos el objeto del usuario actual
   var currentUsera = {
-    id: `{{this.user.id}}`,
-    avatarUrl: `{{this.user.avatarUrl}}`,
-    authorUrl: `{{this.user.authorUrl}}`,
-    name: `{{this.user.username}}`
+    id: `{{this.data.user.id}}`,
+    avatarUrl: `{{this.data.user.avatarUrl}}`,
+    authorUrl: `{{this.data.user.authorUrl}}`,
+    name: `{{this.data.user.username}}`
   };
 </script>
 <script src="/javascripts/learning.js"></script>
