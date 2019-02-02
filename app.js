@@ -61,6 +61,18 @@ app.use(require('node-sass-middleware')({
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+//hbs helper
+hbs.registerHelper("assign", (varName, varValue, options) => {
+  if (!options.data.root) {
+    options.data.root = {};
+  }
+  options.data.root[varName] = varValue;
+});
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
@@ -72,6 +84,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const router = require('./routes/index');
+// const comments = require("./routes/learnings");
+
+
 app.use('/', router)
 
 
