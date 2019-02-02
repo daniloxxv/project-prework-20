@@ -14,19 +14,20 @@
   <link rel="stylesheet" href="/stylesheets/side-comments.css">
   <link rel="stylesheet" href="/stylesheets/default-theme.css">
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto" href="/"><img src="/images/ironhack1.png" class="logo" alt="Ironhack Logo" />
-      Prework 2.0</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-      aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand mr-auto" href="/">
+      <img src="/images/ironhack1.png" class="logo" alt="Ironhack Logo" /> Prework 2.0</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+          <a class="nav-link" href="/">Home
+            <span class="sr-only"></span>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/classmates">Classmates</a>
@@ -36,17 +37,13 @@
         </li>
       </ul>
       <ul class="navbar-nav text-right">
-
-
         {{#if data.user}}
-
         <li class="nav-item">
           <a class="nav-link" href="/editprofile/{{data.user.username}}">Hello, {{data.user.username}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">logout</a>
         </li>
-
         {{else}}
         <li class="nav-item">
           <a class="nav-link" href="/signup">Signup</a>
@@ -61,11 +58,10 @@
 
   {{{body}}}
 
-
   <script src="/javascripts/script.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"

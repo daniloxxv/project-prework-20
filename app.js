@@ -1,67 +1,74 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
-const passport     = require('./services/passport')
-const session      = require('express-session')
-const MongoStore   = require('connect-mongo')(session)
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const express = require("express");
+const favicon = require("serve-favicon");
+const hbs = require("hbs");
+const mongoose = require("mongoose");
+const logger = require("morgan");
+const path = require("path");
+const passport = require("./services/passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 var bcrypt;
-  try { bcrypt = require('bcrypt'); }
-  catch(e) { bcrypt = require('bcryptjs'); } 
-
-
+try {
+  bcrypt = require("bcrypt");
+} catch (e) {
+  bcrypt = require("bcryptjs");
+}
 
 mongoose
-  .connect(process.env.MONGODB, {useNewUrlParser: true})
+  .connect(process.env.MONGODB, { useNewUrlParser: true })
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
   })
   .catch(err => {
-    console.error('Error connecting to mongo', err)
+    console.error("Error connecting to mongo", err);
   });
 
-const app_name = require('./package.json').name;
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+const app_name = require("./package.json").name;
+const debug = require("debug")(
+  `${app_name}:${path.basename(__filename).split(".")[0]}`
+);
 
 const app = express();
 
 // Middleware Setup
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(require('express-session')({
-  secret: 'hjvhvjjvgvjgojgvjvgjgvjmm,mm',
-  resave: false,
-  cookie: { maxAge: 60000 },
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
+app.use(
+  require("express-session")({
+    secret: "hjvhvjjvgvjgojgvjvgjgvjmm,mm",
+    resave: false,
+    cookie: { maxAge: 60000 },
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60 // 1 day
+    })
   })
-}));
+);
 
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 // Express View engine setup
 
-app.use(require('node-sass-middleware')({
-  src:  path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  sourceMap: true
-}));
-      
+app.use(
+  require("node-sass-middleware")({
+    src: path.join(__dirname, "public"),
+    dest: path.join(__dirname, "public"),
+    sourceMap: true
+  })
+);
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
 
 //hbs helper
 hbs.registerHelper("assign", (varName, varValue, options) => {
@@ -71,28 +78,18 @@ hbs.registerHelper("assign", (varName, varValue, options) => {
   options.data.root[varName] = varValue;
 });
 
-
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-
+app.use(express.static(path.join(__dirname, "public")));
+app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = "Express - Generated with IronGenerator";
 
-
-
-// const comments = require("./routes/learnings");
-
-
-const router = require('./routes/index');
-app.use('/', router)
-
-const auth = require('./routes/authRoutes');
-app.use('/', auth)
-
-
-
+//Routes
+const router = require("./routes/index");
+app.use("/", router);
+const auth = require("./routes/authRoutes");
+app.use("/", auth);
+const post = require("./routes/postRoutes");
+app.use("/", post);
 
 module.exports = app;
