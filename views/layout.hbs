@@ -38,10 +38,10 @@
       <ul class="navbar-nav text-right">
 
 
-        {{#if user}}
+        {{#if data.user}}
 
         <li class="nav-item">
-          <a class="nav-link" href="/editprofile/{{user.username}}">Hello, {{user.username}}</a>
+          <a class="nav-link" href="/editprofile/{{data.user.username}}">Hello, {{data.user.username}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">logout</a>
@@ -64,7 +64,6 @@
 
   <script src="/javascripts/script.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script type="text/javascript" src="/javascripts/index.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"

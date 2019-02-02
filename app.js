@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(require('express-session')({
-  secret: 'plugin',
+  secret: 'hjvhvjjvgvjgojgvjvgjgvjmm,mm',
   resave: false,
   cookie: { maxAge: 60000 },
   store: new MongoStore({
@@ -83,11 +83,14 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 
-const router = require('./routes/index');
 // const comments = require("./routes/learnings");
 
 
+const router = require('./routes/index');
 app.use('/', router)
+
+const auth = require('./routes/authRoutes');
+app.use('/', auth)
 
 
 

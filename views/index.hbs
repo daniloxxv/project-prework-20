@@ -1,7 +1,7 @@
 <section class = "home d-flex">
   <div class="main">
-  {{#if user}}
-    <h1>welcome {{user.username}}</h1>
+  {{#if data.user}}
+    <h1>welcome {{data.user.username}}</h1>
   {{else}}
     <h2>Please login or signup to access the course content</h2>
   {{/if}}
