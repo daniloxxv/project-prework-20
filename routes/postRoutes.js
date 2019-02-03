@@ -24,16 +24,6 @@ router.get("/learning", (req, res, next) => {
         //console.log("The data is:", data);
         res.render("learning", { data });
       })
-
-     // User.findOne({
-      //email: user.email
-   // })
-     // .then(user => {
-       
-   //   })
-   //   .catch(err => {
-     //   console.log(err);
-      //});
   }else{
 
     res.render("auth/login")
