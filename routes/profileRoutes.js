@@ -5,12 +5,18 @@ const mongoose = require("mongoose");
 const Profile = require("../Model/Profile");
 const User = require("../Model/User");
 
+//Test Route
+router.get("/loco", (req, res) => {
+  return res.json({ msg: req.body });
+});
+
 // @route   GET  /profile
 // @desc    Get current user profile
 // @access  Private
 router.get("/profile", (req, res) => {
   console.log(req.user._id);
   Profile.findOne({ user: req.user._id })
+    .populate("user", ["username", "avatarUrl"])
     .then(profile => {
       if (!profile) {
         return res
@@ -22,6 +28,62 @@ router.get("/profile", (req, res) => {
     .catch(err => res.status(404).json(err));
 });
 
+
+
+// @route   GET  /profile/all
+// @desc    Get all profiles
+// @access  Private
+
+router.get("/profile/all", (req,res) => {
+
+  Profile.find()
+  .populate("user", ["username", "avatarUrl"])
+  .then(profiles => {
+    if (!profiles) {
+      return res.status(404).json({msg: "The are no profiles"})
+    }
+    res.json(profiles);
+  })
+  .catch(err => {
+    res.status(404).json({mdg:"There are no profiles"})
+  });
+
+});
+
+
+// @route   GET  /profile/handle/:handle
+// @desc    Get profile by handle
+// @access  Private
+router.get("/profile/handle/:handle", (req, res) => {
+  Profile.findOne({ handle: req.params.handle })
+    .populate("user", ["username", "avatarUrl"])
+    .then(profile => {
+      if (!profile) {
+        res.status(404).json({ msg: "There is no profile for this user" });
+      }
+      res.json(profile);
+    })
+    .catch(err => res.status(404).json(err));
+});
+
+// @route   GET  /profile/user/:user_id
+// @desc    Get profile by user Id
+// @access  Private
+router.get("/profile/user/:user_id", (req, res) => {
+  Profile.findOne({ user: req.params.user_id })
+    .populate("user", ["username", "avatarUrl"])
+    .then(profile => {
+      if (!profile) {
+        res.status(404).json(errors);
+      }
+
+      res.json(profile);
+    })
+    .catch(err =>
+      res.status(404).json({ msg: "There is no profile for this user" })
+    );
+});
+
 // @route   POST  /profile
 // @desc    Create or edit user profile
 // @access  Private
@@ -30,6 +92,11 @@ router.post("/profile", (req, res) => {
 
   const profileFields = {};
   profileFields.user = req.user._id;
+
+  if (!req.body.handle) {
+    res.status(400).json({ err: "handle is required" });
+  }
+
   if (req.body.handle) profileFields.handle = req.body.handle;
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.bio) profileFields.bio = req.body.bio;
@@ -48,27 +115,35 @@ router.post("/profile", (req, res) => {
   if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
   if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
 
-  Profile.findOne({ user: req.user._id }).then(profile => {
-    if (profile) {
-      //Update
-      Profile.findOneAndUpdate(
-        { user: req.user.id },
-        { $set: profileFields },
-        { new: true }
-      ).then(profile => res.json(profile));
-    } else {
-      //Create
+  Profile.findOne({ user: req.user._id })
+    .then(profile => {
+      if (profile) {
+        //Update
+        Profile.findOneAndUpdate(
+          { user: req.user._id },
+          { $set: profileFields },
+          { new: true }
+        )
+          .then(profile => res.json(profile))
+          .catch(err => console.log(err));
+      } else {
+        //Create
 
-      //Check if handle exists
-      Profile.findOne({ handle: profile.handle }).then(profile => {
-        if (profile) {
-          res.status(400).json({ error: "That handle alrrady exists" });
-        }
-        //Save Profile
-        new Profile(profileFields).save().then(profille => res.json(profile));
-      });
-    }
-  });
+        //Check if handle exists
+        Profile.findOne({ handle: profileFields.handle })
+          .then(profile => {
+            if (profile) {
+              res.status(400).json({ error: "That handle alrrady exists" });
+            }
+            //Save Profile
+            new Profile(profileFields)
+              .save()
+              .then(profile => res.json(profile));
+          })
+          .catch(err => console.log(err));
+      }
+    })
+    .catch(err => console.log(err));
 });
 
 //end authentication routes

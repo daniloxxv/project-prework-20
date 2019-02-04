@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 
 const profileSchema = new Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref:"User"
   },
   handle:{
-    type:String
+    type:String,
+    required:true,
   },
   location: {
     type: String
