@@ -7,11 +7,14 @@ const profileSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref:"User"
   },
+  handle:{
+    type:String
+  },
   location: {
     type: String
   },
   skills: {
-    type: Array
+    type: [String]
   },
   bio: {
     type: String
