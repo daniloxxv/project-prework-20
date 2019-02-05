@@ -6,7 +6,7 @@ const Profile = require("../Model/Profile");
 const User = require("../Model/User");
 
 //Test Route
-router.get("/loco", (req, res) => {
+router.get("/profile/test", (req, res) => {
   return res.json({ msg: req.body });
 });
 
@@ -14,7 +14,12 @@ router.get("/loco", (req, res) => {
 // @desc    Get current user profile
 // @access  Private
 router.get("/profile", (req, res) => {
-  console.log(req.user._id);
+  const user = req.user;
+
+  if (user === undefined ) {
+    res.render("auth/login");
+  }
+
   Profile.findOne({ user: req.user._id })
     .populate("user", ["username", "avatarUrl"])
     .then(profile => {
@@ -23,33 +28,29 @@ router.get("/profile", (req, res) => {
           .status(404)
           .json({ msg: "There is no profile for this user" });
       }
-      res.json(profile);
+      
+      res.render("profile/profile",{profile} )
+      //res.json(profile);
     })
     .catch(err => res.status(404).json(err));
 });
 
-
-
 // @route   GET  /profile/all
 // @desc    Get all profiles
 // @access  Private
-
-router.get("/profile/all", (req,res) => {
-
+router.get("/profile/all", (req, res) => {
   Profile.find()
-  .populate("user", ["username", "avatarUrl"])
-  .then(profiles => {
-    if (!profiles) {
-      return res.status(404).json({msg: "The are no profiles"})
-    }
-    res.json(profiles);
-  })
-  .catch(err => {
-    res.status(404).json({mdg:"There are no profiles"})
-  });
-
+    .populate("user", ["username", "avatarUrl"])
+    .then(profiles => {
+      if (!profiles) {
+        return res.status(404).json({ msg: "The are no profiles" });
+      }
+      res.json(profiles);
+    })
+    .catch(err => {
+      res.status(404).json({ mdg: "There are no profiles" });
+    });
 });
-
 
 // @route   GET  /profile/handle/:handle
 // @desc    Get profile by handle
