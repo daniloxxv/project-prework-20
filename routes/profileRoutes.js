@@ -37,7 +37,6 @@ router.get("/profile", (req, res) => {
 // @desc    Get all profiles
 // @access  Private
 router.get("/profile/all", (req, res) => {
-
   const user = req.user;
   if (user === undefined) {
     return res.render("auth/login");
@@ -49,7 +48,7 @@ router.get("/profile/all", (req, res) => {
       if (!profiles) {
         return res.status(404).json({ msg: "The are no profiles" });
       }
-      res.render("profile/classmates", {profiles})
+      res.render("profile/classmates", { profiles });
       //res.json(profiles);
     })
     .catch(err => {
@@ -91,10 +90,9 @@ router.get("/profile/user/:user_id", (req, res) => {
       res.render("profile/editProfile", { profile });
     })
     .catch(err =>
-      res.status(404).json({ msg: "There is no profile for this user" })
+      res.status(404).json({ msg: "There is no profile for this user" }),
     );
 });
-
 
 // @route   GET  /profile/user/:user_id
 // @desc    Get profile by user Id
@@ -115,30 +113,20 @@ router.get("/profile/user/classmate/:user_id", (req, res) => {
       res.render("profile/classmateProfile", { profile });
     })
     .catch(err =>
-      res.status(404).json({ msg: "There is no profile for this user" })
+      res.status(404).json({ msg: "There is no profile for this user" }),
     );
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // @route   POST  /profile
 // @desc    Create or edit user profile
 // @access  Private
 router.post("/profile", (req, res) => {
   //Get fields
+
+  const user = req.user;
+  if (user === undefined) {
+    return res.render("auth/login");
+  }
 
   const profileFields = {};
   profileFields.user = req.user._id;
@@ -172,7 +160,7 @@ router.post("/profile", (req, res) => {
         Profile.findOneAndUpdate(
           { user: req.user._id },
           { $set: profileFields },
-          { new: true }
+          { new: true },
         )
           .then(profile => {
             res.redirect("profile");
@@ -188,12 +176,9 @@ router.post("/profile", (req, res) => {
               res.status(400).json({ error: "That handle alrrady exists" });
             }
             //Save Profile
-            new Profile(profileFields)
-              .save()
-              .then(profile => {
-
-                res.redirect("profile");
-              } );
+            new Profile(profileFields).save().then(profile => {
+              res.redirect("profile");
+            });
           })
           .catch(err => console.log(err));
       }

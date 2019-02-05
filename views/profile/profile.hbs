@@ -1,31 +1,19 @@
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-</head>
-
 <body>
-
   <!-- Profile -->
   <div class="profile">
     <div class="container">
-         <div class="btn-group mb-4" role="group">
-            <a href="/profile/user/{{profile.user._id}}" class="btn btn-light">
-              <i class="fas fa-user-circle text-info mr-1"></i> Edit Profile</a>         
-          </div>
+      <div class="btn-group mb-4" role="group">
+        <a href="/profile/user/{{profile.user._id}}" class="btn btn-light">
+          <i class="fas fa-user-circle text-info mr-1"></i> Edit Profile</a>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <div class="row">
             <div class="col-6">
-
             </div>
             <div class="col-6">
-
             </div>
           </div>
-
           <!-- Profile Header -->
           <div class="row">
             <div class="col-md-12">
@@ -34,7 +22,6 @@
                   <div class="col-4 col-md-3 m-auto">
                     <img class="rounded-circle" src="{{profile.user.avatarUrl}}" alt="" style="width:100%" />
                   </div>
-
                 </div>
                 <div class="text-center">
 
@@ -42,7 +29,7 @@
                   {{!-- <p class="lead text-center">Developer at Microsoft</p> --}}
                   <p> {{profile.location}}</p>
                   <p>
-                    <a class="text-white p-2" href="https://medium.com/@rpastor/tutorial-raspberry-pi-retropie-parte-iii-las-roms-4ffbeef8289f">
+                    <a class="text-white p-2" href="https://google.com">
                       <i class="fas fa-globe fa-2x"></i>
                     </a>
 
@@ -55,7 +42,7 @@
                     <a class="text-white p-2" href={{profile.social.linkedin}}>
                       <i class="fab fa-linkedin fa-2x"></i>
                     </a>
-                      <a class="text-white p-2" href={{profile.social.youtube}}>
+                    <a class="text-white p-2" href={{profile.social.youtube}}>
                       <i class="fab fa-youtube fa-2x"></i>
                     </a>
                     <a class="text-white p-2" href={{profile.social.instagram}}>
@@ -76,7 +63,7 @@
                 <p class="lead">{{profile.bio}}
                 </p>
                 <hr />
-                <h3 class="text-center text-info">Skill Set</h3>
+                <h3 class="text-center text-info">Interests/Skills</h3>
                 <div class="row">
 
                   {{#each profile.skills}}
@@ -124,12 +111,6 @@
     </div>
   </div>
   </div>
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
- 
 </body>
 
 </html>
