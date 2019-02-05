@@ -39,13 +39,20 @@ router.get("/profile", (req, res) => {
 // @desc    Get all profiles
 // @access  Private
 router.get("/profile/all", (req, res) => {
+
+  const user = req.user;
+  if (user === undefined) {
+    return res.render("auth/login");
+  }
+
   Profile.find()
     .populate("user", ["username", "avatarUrl"])
     .then(profiles => {
       if (!profiles) {
         return res.status(404).json({ msg: "The are no profiles" });
       }
-      res.json(profiles);
+      res.render("profile/classmates", {profiles})
+      //res.json(profiles);
     })
     .catch(err => {
       res.status(404).json({ msg: "There are no profiles" });
@@ -89,6 +96,45 @@ router.get("/profile/user/:user_id", (req, res) => {
       res.status(404).json({ msg: "There is no profile for this user" })
     );
 });
+
+
+// @route   GET  /profile/user/:user_id
+// @desc    Get profile by user Id
+// @access  Private
+router.get("/profile/user/classmate/:user_id", (req, res) => {
+  const user = req.user;
+
+  if (user === undefined) {
+    return res.render("auth/login");
+  }
+
+  Profile.findOne({ user: req.params.user_id })
+    .populate("user", ["username", "avatarUrl"])
+    .then(profile => {
+      if (!profile) {
+        res.status(404).json(errors);
+      }
+      res.render("profile/classmateProfile", { profile });
+    })
+    .catch(err =>
+      res.status(404).json({ msg: "There is no profile for this user" })
+    );
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @route   POST  /profile
 // @desc    Create or edit user profile
