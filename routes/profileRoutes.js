@@ -16,8 +16,8 @@ router.get("/profile/test", (req, res) => {
 router.get("/profile", (req, res) => {
   const user = req.user;
 
-  if (user === undefined ) {
-    res.render("auth/login");
+  if (user === undefined) {
+    return res.render("auth/login");
   }
 
   Profile.findOne({ user: req.user._id })
@@ -28,8 +28,8 @@ router.get("/profile", (req, res) => {
           .status(404)
           .json({ msg: "There is no profile for this user" });
       }
-      
-      res.render("profile/profile",{profile} )
+
+      res.render("profile/profile", { profile });
       //res.json(profile);
     })
     .catch(err => res.status(404).json(err));
@@ -48,7 +48,7 @@ router.get("/profile/all", (req, res) => {
       res.json(profiles);
     })
     .catch(err => {
-      res.status(404).json({ mdg: "There are no profiles" });
+      res.status(404).json({ msg: "There are no profiles" });
     });
 });
 
@@ -71,14 +71,19 @@ router.get("/profile/handle/:handle", (req, res) => {
 // @desc    Get profile by user Id
 // @access  Private
 router.get("/profile/user/:user_id", (req, res) => {
+  const user = req.user;
+
+  if (user === undefined) {
+    return res.render("auth/login");
+  }
+
   Profile.findOne({ user: req.params.user_id })
     .populate("user", ["username", "avatarUrl"])
     .then(profile => {
       if (!profile) {
         res.status(404).json(errors);
       }
-
-      res.json(profile);
+      res.render("profile/editProfile", { profile });
     })
     .catch(err =>
       res.status(404).json({ msg: "There is no profile for this user" })
@@ -125,7 +130,9 @@ router.post("/profile", (req, res) => {
           { $set: profileFields },
           { new: true }
         )
-          .then(profile => res.json(profile))
+          .then(profile => {
+            res.redirect("profile");
+          })
           .catch(err => console.log(err));
       } else {
         //Create
@@ -139,7 +146,10 @@ router.post("/profile", (req, res) => {
             //Save Profile
             new Profile(profileFields)
               .save()
-              .then(profile => res.json(profile));
+              .then(profile => {
+
+                res.redirect("profile");
+              } );
           })
           .catch(err => console.log(err));
       }
