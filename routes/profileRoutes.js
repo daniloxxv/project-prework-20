@@ -15,20 +15,16 @@ router.get("/profile/test", (req, res) => {
 // @access  Private
 router.get("/profile", (req, res) => {
   const user = req.user;
-
   if (user === undefined) {
     return res.render("auth/login");
   }
-
   Profile.findOne({ user: req.user._id })
     .populate("user", ["username", "avatarUrl"])
     .then(profile => {
       if (!profile) {
         res.render("profile/newProfile", { user });
       }
-
       res.render("profile/profile", { profile });
-      //res.json(profile);
     })
     .catch(err => res.status(404).json(err));
 });
