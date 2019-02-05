@@ -25,10 +25,10 @@
 
               {{#if profile.handle}}
               <input type="text" class="form-control form-control-lg" placeholder="* Profile handle" name="handle"
-                value="  {{profile.handle}}"  />
+                value="{{profile.handle}}"  />
               {{else}}
               <input type="text" class="form-control form-control-lg" placeholder="* Profile handle" name="handle"
-                value="  {{profile.handle}}" required />
+                value="{{profile.handle}}" required />
               {{/if}}
               <small class="form-text text-muted">A unique handle for your profile URL. Your full name, company name,
                 nickname, etc (This CAN'T be changed later)</small>
@@ -46,12 +46,12 @@
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control form-control-lg" placeholder="Skills" name="skills" value=" {{#each profile.skills}}{{this}}{{/each}}" />
+              <input type="text" class="form-control form-control-lg" placeholder="Skills" name="skills" value="{{#each profile.skills}}{{this}}{{/each}}," />
               <small class="form-text text-muted">Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)</small>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control form-control-lg" placeholder="Github Username" name="githubusername" value=" {{profile.githubUsername}}" />
+              <input type="text" class="form-control form-control-lg" placeholder="Github Username" name="githubUsername" value="{{profile.githubUsername}}" />
               <small class="form-text text-muted">If you want your latest repos and a Github link, include your
                 username</small>
             </div>
