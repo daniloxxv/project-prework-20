@@ -24,9 +24,7 @@ router.get("/profile", (req, res) => {
     .populate("user", ["username", "avatarUrl"])
     .then(profile => {
       if (!profile) {
-        return res
-          .status(404)
-          .json({ msg: "There is no profile for this user" });
+        res.render("profile/newProfile", { user });
       }
 
       res.render("profile/profile", { profile });
