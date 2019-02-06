@@ -90,6 +90,8 @@ const auth = require("./routes/authRoutes");
 app.use("/", auth);
 const post = require("./routes/postRoutes");
 app.use("/", post);
+const profile = require("./routes/profileRoutes");
+app.use("/", profile);
 const router = require("./routes/index");
 app.use("/", router);
 

@@ -1,0 +1,43 @@
+<!-- Profiles -->
+<div class="profiles">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-4 text-center">Ironhack Part-Time: Class of 2018</h1>
+        <p class="lead text-center">Browse and connect with classmates</p>
+
+        {{#each profiles}}
+        <!-- Profile Item -->
+        <div class="card card-body bg-light mb-3">
+          <div class="row">
+            <div class="col-2">
+              {{#if this.user.avatarUrl}}
+              <img id="img-classmates" class="rounded-circle" src="{{this.user.avatarUrl}}" alt="profile picture" />
+              {{else}}
+              <img id="img-classmates" class="rounded-circle" src="../../images/placeholder2.png" alt="profile picture" />
+              {{/if}}
+            </div>
+            <div class="col-lg-6 col-md-4 col-8">
+              <h3>{{this.user.username}}</h3>
+              <p>{{this.location}}</p>
+              <a href="/profile/user/classmate/{{this.user._id}}" class="btn btn-info">View Profile</a>
+            </div>
+            <div class="col-md-4 d-none d-lg-block">
+              <h4>Interests/Skills</h4>
+              {{#each this.skills}}
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <i class="fa fa-check pr-1"></i>{{this}}</li>
+              </ul>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

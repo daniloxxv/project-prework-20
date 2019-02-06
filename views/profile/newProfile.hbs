@@ -1,0 +1,120 @@
+<body>
+  <!-- Edit Profile -->
+  <div class="create-profile">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 m-auto">
+          <a href="/" class="btn btn-light">
+            Go Back
+          </a>
+          <h3 class="display-5 text-center">Create Your Profile So you can connect with your classmates</h3>
+
+          <small class="d-block pb-3">* = required field</small>
+          <form action="/profile" method="POST">
+
+            <div class="form-group">
+
+              {{#if profile.handle}}
+              <input type="text" class="form-control form-control-lg" placeholder="* Profile handle" name="handle"
+                value="{{profile.handle}}" />
+              {{else}}
+              <input type="text" class="form-control form-control-lg" placeholder="* Profile handle" name="handle"
+                value="{{profile.handle}}" required />
+              {{/if}}
+              <small class="form-text text-muted">A unique handle for your profile URL. Your full name, company name,
+                nickname, etc (This CAN'T be changed later)</small>
+            </div>
+
+
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Website" name="website" />
+              <small class="form-text text-muted">Could be your own or a company website</small>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Location" name="location" value="{{profile.location}}" />
+              <small class="form-text text-muted">City & state suggested (eg. Boston, MA)</small>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Interests/Skills" name="skills"
+                value="{{#each profile.skills}}{{this}}{{/each}}" />
+              <small class="form-text text-muted">Please use comma separated values (eg. Hiking,Play videogames, sleep)</small>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Github Username" name="githubusername"
+                value="{{profile.githubUsername}}" />
+              <small class="form-text text-muted">If you want your latest repos and a Github link, include your
+                username</small>
+            </div>
+
+            <div class="form-group">
+              <textarea class="form-control form-control-lg" placeholder="A short bio of yourself" name="bio">{{profile.bio}}</textarea>
+              <small class="form-text text-muted">Tell us a little about yourself</small>
+            </div>
+
+            <div class="mb-3">
+              <button type="button" class="btn btn-light">Add Social Network Links</button>
+              <span class="text-muted">Optional</span>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-twitter"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control form-control-lg" placeholder="Twitter Profile URL" name="twitter"
+                value="{{profile.social.twitter}}" />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-facebook"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control form-control-lg" placeholder="Facebook Page URL" name="facebook"
+                value="{{profile.social.facebook}}" />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-linkedin"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control form-control-lg" placeholder="Linkedin Profile URL" name="linkedin"
+                value="{{profile.social.linkedin}}" />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-youtube"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control form-control-lg" placeholder="YouTube Channel URL" name="youtube"
+                value="{{profile.social.youtube}}" />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-instagram"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control form-control-lg" placeholder="Instagram Page URL" name="instagram"
+                value="{{profile.social.instagram}}" />
+            </div>
+            <input type="submit" class="btn btn-info btn-block mt-4" />
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
