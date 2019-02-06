@@ -8,9 +8,8 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-const passport = require("./services/passport");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+//Auth
+const passport = require("passport");
 
 var bcrypt;
 try {
@@ -18,6 +17,8 @@ try {
 } catch (e) {
   bcrypt = require("bcryptjs");
 }
+const User = require("./Model/User");
+
 
 mongoose
   .connect(process.env.MONGODB, { useNewUrlParser: true })
@@ -43,21 +44,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(
-  require("express-session")({
-    secret: "hjvhvjjvgvjgojgvjvgjgvjmm,mm",
-    resave: false,
-    cookie: { maxAge: 60000 },
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
-    })
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
-// Express View engine setup
 
 app.use(
   require("node-sass-middleware")({
@@ -81,8 +67,17 @@ hbs.registerHelper("assign", (varName, varValue, options) => {
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
-// default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+// // default value for title local
+// app.locals.title = "Express - Generated with IronGenerator";
+
+
+//Passport middleware
+app.use(passport.initialize());
+
+//Passport Config
+require("./services/passport")(passport);
+
+
 
 //Routes
 const quiz = require("./routes/quizRoutes");

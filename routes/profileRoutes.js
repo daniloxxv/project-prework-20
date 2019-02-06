@@ -1,3 +1,4 @@
+const passport = require("passport");
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -13,7 +14,7 @@ router.get("/profile/test", (req, res) => {
 // @route   GET  /profile
 // @desc    Get current user profile
 // @access  Private
-router.get("/profile", (req, res) => {
+router.get("/profile", passport.authenticate("jwt", {session:false}), (req, res) => {
   const user = req.user;
   if (user === undefined) {
     return res.render("auth/login");
@@ -32,7 +33,7 @@ router.get("/profile", (req, res) => {
 // @route   GET  /profile/all
 // @desc    Get all profiles
 // @access  Private
-router.get("/profile/all", (req, res) => {
+router.get("/profile/all", passport.authenticate("jwt", {session:false}), (req, res) => {
   const user = req.user;
   if (user === undefined) {
     return res.render("auth/login");
@@ -55,7 +56,7 @@ router.get("/profile/all", (req, res) => {
 // @route   GET  /profile/handle/:handle
 // @desc    Get profile by handle
 // @access  Private
-router.get("/profile/handle/:handle", (req, res) => {
+router.get("/profile/handle/:handle", passport.authenticate("jwt", {session:false}), (req, res) => {
   Profile.findOne({ handle: req.params.handle })
     .populate("user", ["username", "avatarUrl"])
     .then(profile => {
@@ -70,7 +71,7 @@ router.get("/profile/handle/:handle", (req, res) => {
 // @route   GET  /profile/user/:user_id
 // @desc    Get profile by user Id
 // @access  Private
-router.get("/profile/user/:user_id", (req, res) => {
+router.get("/profile/user/:user_id", passport.authenticate("jwt", {session:false}), (req, res) => {
   const user = req.user;
 
   if (user === undefined) {
@@ -93,7 +94,7 @@ router.get("/profile/user/:user_id", (req, res) => {
 // @route   GET  /profile/user/:user_id
 // @desc    Get profile by user Id
 // @access  Private
-router.get("/profile/user/classmate/:user_id", (req, res) => {
+router.get("/profile/user/classmate/:user_id", passport.authenticate("jwt", {session:false}), (req, res) => {
   const user = req.user;
 
   if (user === undefined) {

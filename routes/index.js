@@ -6,7 +6,7 @@ const User = require("../Model/User");
 const Section = require("../Model/Section");
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res, next) => {
   const user = req.user;
   const data = { user: user };
   res.render("index", { data });
