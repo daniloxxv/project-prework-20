@@ -1,108 +1,84 @@
+// routes/auth-routes.js
 const { Router } = require("express");
 const router = Router();
+const express = require("express");
+// User model
 const User = require("../Model/User");
+// Bcrypt to encrypt passwords
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcryptSalt = 10;
 const passport = require("passport");
-//Section  Model
-const Section = require("../Model/Section");
+const ensureLogin = require("connect-ensure-login");
 
-router.get("/users/register", (req, res, next) => {
+router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
-// @route   GET  /user/register
-// @desc    Register User
-// @access  Public
-router.post("/users/registerNew", (req, res) => {
-  //if the email exists already
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
-      return res.status(400).json({ email: "Email already exists" });
-    } else {
-      //Create new User
+router.post("/signup", (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (username === "" || password === "") {
+    res.render("auth/signup", { message: "Indicate username and password" });
+    return;
+  }
+
+  User.findOne({ username })
+    .then(user => {
+      if (user !== null) {
+        res.render("auth/signup", { message: "The username already exists" });
+        return;
+      }
+
+      const salt = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(password, salt);
       const commentId = parseInt(Math.random() * (100000 - 1) + 1);
       const newUser = new User({
-        username: req.body.username,
+        username,
+        password: hashPass,
         email: req.body.email,
         avatarUrl: "",
         id: commentId,
-        password: req.body.password
       });
 
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) {
-            console.log(err);
-          }
-          newUser.password = hash;
-          newUser
-            .save()
-            .then(user => res.redirect("/users/login"))
-            .catch(err => console.log(err));
-        });
+      newUser.save(err => {
+        if (err) {
+          res.render("auth/signup", { message: "Something went wrong" });
+        } else {
+          res.redirect("/");
+        }
       });
-    }
-  });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
-router.get("/users/login", (req, res, next) => {
+//Log in
+router.get("/login", (req, res, next) => {
   res.render("auth/login");
 });
 
-// @route   Post  /user/login
-// @desc    Login user / Returnoing JWT token
-// @access  Public
-router.post("/users/loginNew", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true,
+  }),
+);
 
-  //Find by email
-  User.findOne({ email }).then(user => {
-    //Check for user
-    if (!user) {
-      return res.status(404).json({ email: "User not found" });
-    }
-    //Check password
-    bcrypt.compare(password, user.password).then(isMatch => {
-      if (isMatch) {
-        //User matched
-
-        //Create jwt payload
-        const payload = {
-          _id: user._id,
-          username: user.username,
-          avatarUrl: user.avatarUrl
-        };
-        //Sign the token
-        jwt.sign(payload, "secret", { expiresIn: 3600 }, (err, token) => {
-         
-          res.json({
-            success: true,
-            token: "Bearer " + token
-          });
-        });
-      } else {
-        return res.status(400).json({ password: "Password incorrect" });
-      }
-    });
-  });
+router.get("/logout", (req, res, next) => {
+  req.logout();
+  res.redirect("/login");
 });
 
-// @route   GET  /user/current
-// @desc    Return the current user
-// @access  Private
-router.get(
-  "/users/current",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    res.json({
-      id: req.user._id,
-      name: req.user.username,
-      email: req.user.email
-    });
-  }
-);
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("private", { user: req.user });
+});
+
+module.exports = router;
 
 // router
 //   //authentication routes
@@ -200,4 +176,4 @@ router.get(
 //   });
 
 //end authentication routes
-module.exports = router;
+// module.exports = router;

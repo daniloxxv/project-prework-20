@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 //Models
 const Profile = require("../Model/Profile");
 const User = require("../Model/User");
+const ensureLogin = require("connect-ensure-login");
 
 //Test Route
 router.get("/profile/test", (req, res) => {
@@ -14,7 +15,7 @@ router.get("/profile/test", (req, res) => {
 // @route   GET  /profile
 // @desc    Get current user profile
 // @access  Private
-router.get("/profile", passport.authenticate("jwt", {session:false}), (req, res) => {
+router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res) => {
   const user = req.user;
   if (user === undefined) {
     return res.render("auth/login");
@@ -33,7 +34,7 @@ router.get("/profile", passport.authenticate("jwt", {session:false}), (req, res)
 // @route   GET  /profile/all
 // @desc    Get all profiles
 // @access  Private
-router.get("/profile/all", passport.authenticate("jwt", {session:false}), (req, res) => {
+router.get("/profile/all", ensureLogin.ensureLoggedIn(), (req, res) => {
   const user = req.user;
   if (user === undefined) {
     return res.render("auth/login");
@@ -56,63 +57,75 @@ router.get("/profile/all", passport.authenticate("jwt", {session:false}), (req, 
 // @route   GET  /profile/handle/:handle
 // @desc    Get profile by handle
 // @access  Private
-router.get("/profile/handle/:handle", passport.authenticate("jwt", {session:false}), (req, res) => {
-  Profile.findOne({ handle: req.params.handle })
-    .populate("user", ["username", "avatarUrl"])
-    .then(profile => {
-      if (!profile) {
-        res.status(404).json({ msg: "There is no profile for this user" });
-      }
-      res.json(profile);
-    })
-    .catch(err => res.status(404).json(err));
-});
+router.get(
+  "/profile/handle/:handle",
+  ensureLogin.ensureLoggedIn(),
+  (req, res) => {
+    Profile.findOne({ handle: req.params.handle })
+      .populate("user", ["username", "avatarUrl"])
+      .then(profile => {
+        if (!profile) {
+          res.status(404).json({ msg: "There is no profile for this user" });
+        }
+        res.json(profile);
+      })
+      .catch(err => res.status(404).json(err));
+  },
+);
 
 // @route   GET  /profile/user/:user_id
 // @desc    Get profile by user Id
 // @access  Private
-router.get("/profile/user/:user_id", passport.authenticate("jwt", {session:false}), (req, res) => {
-  const user = req.user;
+router.get(
+  "/profile/user/:user_id",
+  ensureLogin.ensureLoggedIn(),
+  (req, res) => {
+    const user = req.user;
 
-  if (user === undefined) {
-    return res.render("auth/login");
-  }
+    if (user === undefined) {
+      return res.render("auth/login");
+    }
 
-  Profile.findOne({ user: req.params.user_id })
-    .populate("user", ["username", "avatarUrl"])
-    .then(profile => {
-      if (!profile) {
-        res.status(404).json(errors);
-      }
-      res.render("profile/editProfile", { profile });
-    })
-    .catch(err =>
-      res.status(404).json({ msg: "There is no profile for this user" }),
-    );
-});
+    Profile.findOne({ user: req.params.user_id })
+      .populate("user", ["username", "avatarUrl"])
+      .then(profile => {
+        if (!profile) {
+          res.status(404).json(errors);
+        }
+        res.render("profile/editProfile", { profile });
+      })
+      .catch(err =>
+        res.status(404).json({ msg: "There is no profile for this user" }),
+      );
+  },
+);
 
 // @route   GET  /profile/user/:user_id
 // @desc    Get profile by user Id
 // @access  Private
-router.get("/profile/user/classmate/:user_id", passport.authenticate("jwt", {session:false}), (req, res) => {
-  const user = req.user;
+router.get(
+  "/profile/user/classmate/:user_id",
+  ensureLogin.ensureLoggedIn(),
+  (req, res) => {
+    const user = req.user;
 
-  if (user === undefined) {
-    return res.render("auth/login");
-  }
+    if (user === undefined) {
+      return res.render("auth/login");
+    }
 
-  Profile.findOne({ user: req.params.user_id })
-    .populate("user", ["username", "avatarUrl"])
-    .then(profile => {
-      if (!profile) {
-        res.status(404).json(errors);
-      }
-      res.render("profile/classmateProfile", { profile });
-    })
-    .catch(err =>
-      res.status(404).json({ msg: "There is no profile for this user" }),
-    );
-});
+    Profile.findOne({ user: req.params.user_id })
+      .populate("user", ["username", "avatarUrl"])
+      .then(profile => {
+        if (!profile) {
+          res.status(404).json(errors);
+        }
+        res.render("profile/classmateProfile", { profile });
+      })
+      .catch(err =>
+        res.status(404).json({ msg: "There is no profile for this user" }),
+      );
+  },
+);
 
 // @route   POST  /profile
 // @desc    Create or edit user profile
