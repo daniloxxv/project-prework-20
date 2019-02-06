@@ -85,7 +85,8 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.locals.title = "Express - Generated with IronGenerator";
 
 //Routes
-
+const quiz = require("./routes/quizRoutes");
+app.use("/", quiz);
 const auth = require("./routes/authRoutes");
 app.use("/", auth);
 const post = require("./routes/postRoutes");

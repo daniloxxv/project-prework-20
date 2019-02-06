@@ -11,11 +11,15 @@ a {
   margin-left: 1rem;
   margin-right: 1rem; }
 
-.formpage, .classmates, .home, #error {
+.formpage, .classmates, .home, .learning, #error {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 80vh; }
+  align-items: center; }
+
+.home {
+  height: 60vh; }
 
 .form {
   justify-content: center;
@@ -47,10 +51,13 @@ a {
   font-size: 0.9rem; }
 
 .upper {
+  position: fixed;
+  top: 4rem;
   display: flex;
   height: 2.2rem;
   justify-content: space-between;
-  background-color: #E9ECEF; }
+  background-color: #E9ECEF;
+  z-index: 500; }
 
 .progress {
   height: 2.2rem;
@@ -108,5 +115,39 @@ a {
 
 .form-control::placeholder {
   color: #bbb !important; }
+
+/*learning*/
+.learning {
+  font-size: 1rem; }
+
+.title {
+  font-weight: 600;
+  font-size: 2rem; }
+
+.commentable-section {
+  margin-top: 1.2rem; }
+
+.sublead {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 100; }
+
+.lessonpic {
+  width: 550px;
+  margin: 1.5rem;
+  justify-self: center; }
+
+.quiztitle {
+  font-size: 1.5rem;
+  font-weight: 600; }
+
+.quiz {
+  border: solid 1px;
+  border-color: #000000;
+  padding: 2rem; }
+
+.quizinput {
+  margin-top: 1rem;
+  margin-right: 1rem; }
 
 /*# sourceMappingURL=style.css.map */
