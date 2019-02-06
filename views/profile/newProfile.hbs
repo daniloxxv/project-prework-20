@@ -38,7 +38,7 @@
 
             <div class="form-group">
               <input type="text" class="form-control form-control-lg" placeholder="Interests/Skills" name="skills"
-                value=" {{#each profile.skills}}{{this}}{{/each}}" />
+                value="{{#each profile.skills}}{{this}}{{/each}}" />
               <small class="form-text text-muted">Please use comma separated values (eg. Hiking,Play videogames, sleep)</small>
             </div>
 
@@ -109,6 +109,7 @@
                 value="{{profile.social.instagram}}" />
             </div>
             <input type="submit" class="btn btn-info btn-block mt-4" />
+            <br>
           </form>
         </div>
       </div>
