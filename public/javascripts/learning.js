@@ -31,7 +31,7 @@ $(document).ready(function() {
       data: commentId,
       success: function(success) {
         //sideComments.removeComment(commentId.sectionId, commentId.id);
-        window.location.assign("/");
+        window.location.assign("/learning");
       },
     });
   });

@@ -27,7 +27,7 @@ mongoose
   .connect(process.env.MONGODB, { useNewUrlParser: true })
   .then(x => {
     console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`,
     );
   })
   .catch(err => {
@@ -36,7 +36,7 @@ mongoose
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
-  `${app_name}:${path.basename(__filename).split(".")[0]}`
+  `${app_name}:${path.basename(__filename).split(".")[0]}`,
 );
 
 const app = express();
@@ -51,8 +51,8 @@ app.use(
   require("node-sass-middleware")({
     src: path.join(__dirname, "public"),
     dest: path.join(__dirname, "public"),
-    sourceMap: true
-  })
+    sourceMap: true,
+  }),
 );
 
 app.set("views", path.join(__dirname, "views"));
@@ -77,8 +77,8 @@ app.use(
   session({
     secret: "our-passport-local-strategy-app",
     resave: true,
-    saveUninitialized: true
-  })
+    saveUninitialized: true,
+  }),
 );
 
 //Passport Config
@@ -109,21 +109,19 @@ passport.use(
       }
       return next(null, user);
     });
-  })
+  }),
 );
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use((req, res, next) => {
   // get user from cookie, database, etc.
   const user = req.user;
   if (user) {
-    // res.locals.userName = user;
     app.locals.userName = user.username;
     app.locals.avatar = user.avatarUrl;
-  }else{
+  } else {
     app.locals.userName = "";
     app.locals.avatar = "";
   }
