@@ -123,8 +123,11 @@ router.post(
 // @desc    Ends user Session
 // @access  Public
 router.get("/logout", (req, res, next) => {
-  req.logout();
-  res.redirect("/login");
+  
+  req.session.destroy( (err) => {
+    res.redirect('/login'); //Inside a callback… bulletproof!
+  });
+ 
 });
 
 module.exports = router;

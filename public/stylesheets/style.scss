@@ -48,6 +48,22 @@ margin-right: 1rem;
   margin-left: 1.5rem;
 }
 
+
+.profile-img{
+  margin-top: 10px;
+  margin-right: 11px;
+  margin-bottom: 1px;
+  float: left;
+  //background: url("/images/placeholder2.png") 50% 50% no-repeat; /* 50% 50% centers image in div */
+  /* Interchange this value depending on prefering width vs. height */
+  width: 31px;
+  height: 35px;
+}
+
+#hello {
+  text-align: center;
+}
+
 .main{
   justify-content: center;
   align-self: center;
@@ -186,3 +202,5 @@ margin-right: 1rem;
   margin-top: 1rem;
   margin-right: 1rem;
 }
+
+

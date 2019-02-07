@@ -16,7 +16,10 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 
+
 <body>
+
+
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <a class="navbar-brand mr-auto" href="/">
       <img src="/images/ironhack1.png" class="logo" alt="Ironhack Logo" /> Prework 2.0</a>
@@ -39,9 +42,15 @@
         </li>
       </ul>
       <ul class="navbar-nav text-right">
-        {{#if data.user}}
+        {{#if userName}}
         <li class="nav-item">
-          <a class="nav-link" href="/profile">Hello, {{data.user.username}}</a>
+          {{#if avatar}}
+          <div class="img-rounded profile-img" style="background:url({{{avatar}}})50% 50% no-repeat;background-size: auto 100%; "></div>
+          {{else}}
+          <div class="img-rounded profile-img" style="background:url(/images/placeholder2.png)50% 50% no-repeat;background-size: auto 100%; "></div>
+
+          {{/if}}
+          <a  class="nav-link" id="hello" href="/profile"> Hello {{userName}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">logout</a>

@@ -38,6 +38,18 @@ a {
 .nav-item {
   margin-left: 1.5rem; }
 
+.profile-img {
+  margin-top: 10px;
+  margin-right: 11px;
+  margin-bottom: 1px;
+  float: left;
+  /* Interchange this value depending on prefering width vs. height */
+  width: 31px;
+  height: 35px; }
+
+#hello {
+  text-align: center; }
+
 .main {
   justify-content: center;
   align-self: center; }
