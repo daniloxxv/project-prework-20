@@ -13,6 +13,8 @@ const path = require("path");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
+flash = require('connect-flash');
+
 
 var bcrypt;
 try {
@@ -110,6 +112,7 @@ passport.use(
     });
   }),
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
