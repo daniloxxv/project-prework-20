@@ -11,9 +11,9 @@ let parts = [{ "text": 'Home', "link": '/' }];
   }
 let breadcrumbs = $('#breadcrumblist')
 let error = $('#error')
-console.log(parts)
-parts = parts.filter(el=>el.text !== "Classmates" && el.text !== "User" && !/[0-9]/.test(el.text)); 
-console.log(parts)
+
+parts = parts.filter(el=>el.text !== "Classmates" && el.text !== "User" && !/^[0-9a-fA-F]{24}$/.test(el.text)); //filtering out post routes
+
 if (error.length === 0){
 for (let i = 0; i < parts.length-1; i++){
     breadcrumbs.append(`<li class="breadcrumb-item" aria-current="page"><a href="${parts[i].link}">${parts[i].text}</a></li>`)
