@@ -30,6 +30,12 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
+  if (/[^a-z]/.test(username)) {
+    let usernameError = "Usernames can only contain lowercase letters";
+    res.render("auth/signup", { usernameError });
+    return;
+  }
+
   //   Regex validation for password
   else if (!req.body.password) {
     let passwordError = "Passwords cannot be blank";

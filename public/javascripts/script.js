@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   /////// creating breadcrumbs
 const here = location.href.split('/').slice(3);
-const parts = [{ "text": 'Home', "link": '/' }];
+let parts = [{ "text": 'Home', "link": '/' }];
   for( let i = 0; i < here.length; i++ ) {
     let part = here[i];
     let text = part ? part[0].toUpperCase() + part.slice(1,part.length) : "";
@@ -11,7 +11,9 @@ const parts = [{ "text": 'Home', "link": '/' }];
   }
 let breadcrumbs = $('#breadcrumblist')
 let error = $('#error')
-
+console.log(parts)
+parts = parts.filter(el=>el.text !== "Classmates" && el.text !== "User" && !/[0-9]/.test(el.text)); 
+console.log(parts)
 if (error.length === 0){
 for (let i = 0; i < parts.length-1; i++){
     breadcrumbs.append(`<li class="breadcrumb-item" aria-current="page"><a href="${parts[i].link}">${parts[i].text}</a></li>`)
