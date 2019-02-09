@@ -89,6 +89,8 @@ router.get(
     Profile.findOne({ user: req.params.user_id })
       .populate("user", ["username", "avatarUrl"])
       .then(profile => {
+        profile.skills = profile.skills.join(", ");
+
         if (!profile) {
           res.status(404).json(errors);
         }
