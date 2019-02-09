@@ -103,7 +103,6 @@ a {
   background: url("../img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px; }
 
@@ -134,7 +133,8 @@ a {
 
 .title {
   font-weight: 600;
-  font-size: 2rem; }
+  font-size: 2.5rem;
+  text-align: center; }
 
 .commentable-section {
   margin-top: 1.2rem; }
@@ -145,7 +145,8 @@ a {
   font-weight: 100; }
 
 .lessonpic {
-  width: 550px;
+  width: 600px;
+  padding-left: 40px;
   margin: 1.5rem;
   justify-self: center; }
 
@@ -161,5 +162,21 @@ a {
 .quizinput {
   margin-top: 1rem;
   margin-right: 1rem; }
+
+p {
+  line-height: 1.4rem; }
+
+.classmate-profile, create-profile {
+  margin-top: 120px;
+  margin-bottom: 300px;
+  padding-bottom: 300px;
+  margin-left: 25%; }
+
+.edit-profile {
+  margin-bottom: 100px; }
+
+.profile {
+  margin-top: 120px;
+  margin-bottom: 100px; }
 
 /*# sourceMappingURL=style.css.map */

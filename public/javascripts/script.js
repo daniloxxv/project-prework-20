@@ -12,7 +12,7 @@ let parts = [{ "text": 'Home', "link": '/' }];
 let breadcrumbs = $('#breadcrumblist')
 let error = $('#error')
 
-parts = parts.filter(el=>el.text !== "Classmates" && el.text !== "User" && !/^[0-9a-fA-F]{24}$/.test(el.text)); //filtering out post routes
+parts = parts.filter(el=>el.text !== "Classmates" && el.text !== "User" && !/^.{24}$/.test(el.text)); //filtering out post routes
 
 if (error.length === 0){
 for (let i = 0; i < parts.length-1; i++){

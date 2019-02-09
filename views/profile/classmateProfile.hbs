@@ -1,23 +1,12 @@
 
-<body style="margin-top:120px;margin-bottom:50px;">
+
   <!-- Profile -->
-  <div class="profile">
+  <div class="classmate-profile d-flex justify-content-center">
     <div class="container">
-  
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-6">
-
-            </div>
-            <div class="col-6">
-
-            </div>
-          </div>
 
           <!-- Profile Header -->
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
               <div class="card card-body bg-info text-white mb-3">
                 <div class="row">
                   <div class="col-4 col-md-3 m-auto">
@@ -58,7 +47,7 @@
 
           <!-- Profile About -->
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
               <div class="card card-body bg-light mb-3">
                 <h3 class="text-center text-info">{{profile.user.username}}'s Bio</h3>
                 <br>
@@ -82,43 +71,12 @@
 
           <!-- Profile Github -->
 
-          <div ref="myRef">
-            <hr />
-            <h3 class="mb-4">Latest Github Repos (Pending, We need the github api)</h3>
-            <div key={repo.id} class="card card-body mb-2">
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>
-                    <Link to={repo.html_url} class="text-info" target="_blank"> Repository One
-                    </Link>
-                  </h4>
-                  <p>Repository description</p>
-                </div>
-                <div class="col-md-6">
-                  <span class="badge badge-info mr-1">
-                    Stars: 44
-                  </span>
-                  <span class="badge badge-secondary mr-1">
-                    Watchers: 21
-                  </span>
-                  <span class="badge badge-success">
-                    Forks: 122
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+    
       </div>
     </div>
-  </div>
-  </div>
 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
- 
-</body>
-
-</html>
