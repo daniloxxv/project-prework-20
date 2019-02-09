@@ -5,43 +5,27 @@
 
   </h1>
   <cite class= "sublead">
-    A Distributed Version Control System (DVCS) or Version Control System (VCS) is a system that records changes to a file or
-    set of files over time so you can recall specific versions later.
+    A Distributed Version Control System (DVCS) is a system that records changes to a  set of files over time so you can recall specific versions later.
   </cite>
 
   <p data-section-id="1" class="commentable-section">
-    <strong>The DVCS usually works together with a Code Hosting Platform, where your team can store your project’s code to share it among
-    members of the team</strong>. In computer programming, the combination of DVCS with a Code Hosting Platform help you to work with
-    your team. This is the most powerful tool you will use to combine code created by different team members. When two different
-    team members are working on the same file, the VCS is going to help them combine their different code, and pick which
-    code to accept if both developers edit the same code.
+    <strong>In software development, distributed version control (also known as distributed revision control) is a form of version control where the complete codebase - including its full history - is mirrored on every developer's computer.</strong> This allows branching and merging to be managed automatically, increases speeds of most operations (except for pushing and pulling), improves the ability to work offline, and does not rely on a single location for backups.
   </p>
   <p data-section-id="2" class="commentable-section">
-    Having different versions of the same file gives you huge power over your code. As said before, if you break something in
-    the latest version of the code, you will be able to recover the old correct version of your code. It’s also very helpful
-    when you are combining code from different developers into one file, or even different files into one project (don’t
-    worry if you don’t understand this right now, you are going to learn this in depth later on). <strong>Another cool feature that
-    it provides you is the chance to see who has written each code.</strong> It allows you to defend how many hours have you been
-    working, of course, but it’s funnier to use it to figure out who has screw up the code.
+   Distributed revision control systems (DVCS) takes a peer-to-peer approach to version control, as opposed to the client–server approach of centralized systems. Distributed revision control synchronizes repositories by exchanging patches from peer to peer. <strong>There is no single central version of the codebase; instead, each user has a working copy and the full change history.</strong>
   </p>
 
 <img src="https://i.imgur.com/7c6ss6v.jpg" alt="" class="lessonpic">
 
   <p data-section-id="3" class="commentable-section">
-    <strong>Git is a free and open DVCS designed to handle computer programming projects with speed and efficiency.</strong> It’s easy to learn
-    and has a very high performance. Git runs locally. What does it mean? It allows you to use the Version Control System
-    in your laptop. It means that you will have in your own computer a Version Control System, to recover all code, see what
-    changes you have done, etc. You are going to understand why you need to use Git in your computer in a minute. Before
-    understand that, you need to learn what is GitHub.
+    The distributed model is generally better suited for large projects with partly independent developers, such as the Linux kernel project, because developers can work independently and submit their changes for merge (or rejection). The distributed model flexibly allows adopting custom source code contribution workflows. <strong>The integrator workflow is the most widely used.</strong> In the centralized model, developers must serialize their work, to avoid problems with different versions.
   </p>
 
   <p data-section-id="4" class="commentable-section">
-    Git is a free and open DVCS designed to handle computer programming projects with speed and efficiency. It’s easy to learn
-    and has a very high performance. Git runs locally. What does it mean? It allows you to use the Version Control System
-    in your laptop. It means that you will have in your own computer a Version Control System, to recover all code, see what
-    changes you have done, etc. You are going to understand why you need to use Git in your computer in a minute. Before
-    understand that, you need to learn what is GitHub.
+    <strong>GitHub is a web-based hosting service for version control using Git.</strong> It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features.
+    <small class="form-text text-muted">Text from Wikipedia.com</small>
   </p>
+
 
   {{!-- This is the handlebar helper that we registered--}} {{assign 'existingComments' this.data.coment}}
 
@@ -55,6 +39,7 @@
 <small id="quiz1helper" class="form-text text-muted">{{{successMessage}}}</small>
 
 </div>
+
 </section>
 
 </div>
