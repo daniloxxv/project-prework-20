@@ -119,11 +119,22 @@ app.use((req, res, next) => {
   // get user from cookie, database, etc.
   const user = req.user;
   if (user) {
-    app.locals.userName = user.username;
+    app.locals.userName = user.username[0].toUpperCase()+user.username.slice(1,user.username.length);
     app.locals.avatar = user.avatarUrl;
   } else {
     app.locals.userName = "";
     app.locals.avatar = "";
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  // get user from cookie, database, etc.
+  if (req.user) {
+    var progress = (req.user.completedLessons.filter(el => el > 0).length / req.user.completedLessons.length)*100;
+    app.locals.progress = progress;
+  } else {
+    app.locals.progress = 0
   }
   next();
 });
