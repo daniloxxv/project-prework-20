@@ -30,8 +30,8 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  if (/[^a-z]/.test(username)) {
-    let usernameError = "Usernames can only contain lowercase letters";
+  if (/[^a-z0-9]/.test(username)) {
+    let usernameError = "Usernames can only contain lowercase letters and numbers";
     res.render("auth/signup", { usernameError });
     return;
   }
