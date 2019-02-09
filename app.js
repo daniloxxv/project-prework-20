@@ -128,6 +128,17 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  // get user from cookie, database, etc.
+  if (req.user) {
+    var progress = (req.user.completedLessons.filter(el => el > 0).length / req.user.completedLessons.length)*100;
+    app.locals.progress = progress;
+  } else {
+    app.locals.progress = 0
+  }
+  next();
+});
+
 //Routes
 const quiz = require("./routes/quizRoutes");
 app.use("/", quiz);

@@ -14,6 +14,7 @@ let error = $('#error')
 
 parts = parts.filter(el=>el.text !== "Classmates" && el.text !== "User" && !/^.{24}$/.test(el.text)); //filtering out post routes
 
+
 if (error.length === 0){
 for (let i = 0; i < parts.length-1; i++){
     breadcrumbs.append(`<li class="breadcrumb-item" aria-current="page"><a href="${parts[i].link}">${parts[i].text}</a></li>`)
@@ -24,4 +25,5 @@ else {
   breadcrumbs.append(`<li class="breadcrumb-item" aria-current="page">Error 404</li>`)
   console.log(error)
 }
+
 })
