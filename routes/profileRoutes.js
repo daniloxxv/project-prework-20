@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const Profile = require("../Model/Profile");
 const User = require("../Model/User");
 const ensureLogin = require("connect-ensure-login");
+const axios = require("axios");
 
 //Test Route
 router.get("/profile/test", (req, res) => {
@@ -26,7 +27,28 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res) => {
       if (!profile) {
         res.render("profile/newProfile", { user });
       }
-      res.render("profile/profile", { profile });
+
+      if (profile.githubUsername !== undefined) {
+        axios
+          .get(
+            `https://api.github.com/users/${
+              profile.githubUsername
+            }/repos?per_page=100`
+          )
+          .then(response => {
+            latestRepos = response.data
+              .sort((a, b) => (b.updated_at > a.updated_at ? 1 : -1))
+              .slice(0, 3);
+            console.log(latestRepos);
+
+
+            res.render("profile/profile", { profile, latestRepos });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+      // console.log(latestRepos);
     })
     .catch(err => res.status(404).json(err));
 });
@@ -70,7 +92,7 @@ router.get(
         res.json(profile);
       })
       .catch(err => res.status(404).json(err));
-  },
+  }
 );
 
 // @route   GET  /profile/user/:user_id
@@ -97,9 +119,9 @@ router.get(
         res.render("profile/editProfile", { profile });
       })
       .catch(err =>
-        res.status(404).json({ msg: "There is no profile for this user" }),
+        res.status(404).json({ msg: "There is no profile for this user" })
       );
-  },
+  }
 );
 
 // @route   GET  /profile/user/:user_id
@@ -124,9 +146,9 @@ router.get(
         res.render("profile/classmateProfile", { profile });
       })
       .catch(err =>
-        res.status(404).json({ msg: "There is no profile for this user" }),
+        res.status(404).json({ msg: "There is no profile for this user" })
       );
-  },
+  }
 );
 
 // @route   POST  /profile
@@ -154,7 +176,7 @@ router.post("/profile", (req, res) => {
     profileFields.githubUsername = req.body.githubUsername;
   //Skills - split into array
   if (typeof req.body.skills !== "undefined") {
-    profileFields.skills = req.body.skills.split(",").map(el=> el.trim());
+    profileFields.skills = req.body.skills.split(",").map(el => el.trim());
   }
 
   //Social
@@ -172,7 +194,7 @@ router.post("/profile", (req, res) => {
         Profile.findOneAndUpdate(
           { user: req.user._id },
           { $set: profileFields },
-          { new: true },
+          { new: true }
         )
           .then(profile => {
             res.redirect("profile");

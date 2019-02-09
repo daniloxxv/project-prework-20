@@ -8,6 +8,7 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "connect-ensure-login": "^0.1.1",
