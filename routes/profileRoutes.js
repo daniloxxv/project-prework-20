@@ -26,9 +26,12 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res) => {
     .then(profile => {
       if (!profile) {
         res.render("profile/newProfile", { user });
+        return;
       }
 
-      if (profile.githubUsername !== undefined) {
+      console.log(profile)
+     
+      if (profile.githubUsername !== undefined || profile !== null) {
         axios
           .get(
             `https://api.github.com/users/${
@@ -39,16 +42,19 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res) => {
             latestRepos = response.data
               .sort((a, b) => (b.updated_at > a.updated_at ? 1 : -1))
               .slice(0, 3);
-            console.log(latestRepos);
-
-
+            
             res.render("profile/profile", { profile, latestRepos });
+            return;
           })
           .catch(error => {
             console.log(error);
           });
+      }else{
+        res.render("profile/profile", { profile});
+        return;
       }
-      // console.log(latestRepos);
+     
+
     })
     .catch(err => res.status(404).json(err));
 });
