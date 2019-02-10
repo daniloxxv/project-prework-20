@@ -75,10 +75,7 @@
           </div>
         </div>
 
-        </ul>
 
-
-  
         <div ref="myRef">
           <hr />
           <h3 class="mb-4">Latest Github Repos</h3>
@@ -87,30 +84,41 @@
             <div class="row">
               <div class="col-md-6">
                 <h4>
-                  <Link to={{this.url}} class="text-info" target="_blank">{{this.name}}</Link>
+                  <a href="{{this.svn_url}}">{{this.name}}</a>
+
                 </h4>
                 <p>{{this.description}}</p>
               </div>
               <div class="col-md-6">
-                <span class="badge badge-info mr-1">
-                  Stars: {{this.stargazers_count}}
+                {{!-- <span>
+                <!-- Place this tag where you want the button to render. -->
+                <a class="github-button" href="https://github.com/{{this.owner.login}}" data-size="large" data-show-count="true"
+                  aria-label="Follow @{{this.owner.login}} on GitHub">Follow @{{this.owner.login}}</a>
+                  </span> --}}
+                <span>
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}"
+                    data-icon="octicon-star" data-size="large" data-show-count="true"
+                    aria-label="Star {{this.owner.login}}/{{this.name}} on GitHub">Star</a>
                 </span>
-                <span class="badge badge-secondary mr-1">
-                  Watchers: {{this.watchers_count}}
+                <span>
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/subscription"
+                    data-icon="octicon-eye" data-size="large" data-show-count="true"
+                    aria-label="Watch {{this.name}}/{{this.name}} on GitHub">Watch</a>
                 </span>
-                <span class="badge badge-success">
-                  Forks: {{this.forks_count}}
+
+                <span>
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/fork"
+                    data-icon="octicon-repo-forked" data-size="large" data-show-count="true"
+                    aria-label="Fork {{this.owner.login}}/{{this.name}} on GitHub">Fork</a>
                 </span>
               </div>
             </div>
           </div>
-          {{/each}} 
+          {{/each}}
         </div>
       </div>
     </div>
   </div>
 </div>
 </div>
-</body>
 
-</html>

@@ -895,9 +895,19 @@ require.register("side-comments/js/section.js", function(
         .data("comment-id"),
       parentId = $(event.target).data("parent-id");
 
-    if (window.confirm("Are you sure you want to delete this comment?")) {
-      this.deleteComment(commentId, parentId);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(result => {
+      if (result.value) {
+        this.deleteComment(commentId, parentId);
+      }
+    });
   };
 
   /**

@@ -17,7 +17,13 @@ $(document).ready(function() {
       data: comment,
       success: function(savedComment) {
         // Once the comment is saved, you can insert the comment into the comment stream with "insertComment(comment)".
-        alert("Comment saved");
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Comment posted',
+          showConfirmButton: false,
+          timer: 1500
+        })
         sideComments.insertComment(comment);
       },
     });
