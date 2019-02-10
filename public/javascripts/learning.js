@@ -36,8 +36,8 @@ $(document).ready(function() {
       type: "POST",
       data: commentId,
       success: function(success) {
-        //sideComments.removeComment(commentId.sectionId, commentId.id);
-        window.location.assign("/learning");
+        sideComments.removeComment(commentId.sectionId, commentId.id);
+        //window.location.assign("/learning");
       },
     });
   });
