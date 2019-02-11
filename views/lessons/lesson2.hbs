@@ -39,34 +39,12 @@ Headings existed in HTML Tags, and were standardized in HTML 2.0; still current.
 <div class="quiz form-group">
 <h3 class = "quiztitle">Quiz 2: HTML 101</h3>
 <form action="/quiz2" method="post" class = "form-inline">
-<label for="quiz2">It's time to test your knowledge of basic HTML tags. Which of the following tags should be used to create a new paragraph? Please ignore the spaces.</label>
-<div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-    ~~ paragraph ~~
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-    $ newPar
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" checked>
-    < p >
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
-    < h1 >
-</label>
-</div>
-<input id='submitquiz2' type="submit" value="Submit" class="btn btn-success quizinput">
+<label for="quiz2">It's time to test your knowledge of basic HTML tags. How would you create a new paragraph with the words "Ironhack rocks!" inside it?</label>
+<input type="text" name="quiz2" id="quiz2" class = "form-control quizinput">
+<input id='submitQuiz2' type="submit" value="Submit" class="btn btn-success quizinput">
 </form>
 <small id="quiz2helper" class="form-text text-muted">{{{successMessage}}}</small>
+
 
 </div>
 </section>
