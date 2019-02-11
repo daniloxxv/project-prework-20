@@ -18,7 +18,7 @@ $(document).ready(function() {
       success: function(savedComment) {
         // Once the comment is saved, you can insert the comment into the comment stream with "insertComment(comment)".
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           type: 'success',
           title: 'Comment posted',
           showConfirmButton: false,
