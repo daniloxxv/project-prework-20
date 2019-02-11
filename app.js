@@ -139,6 +139,28 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  // get user from cookie, database, etc.
+  if (req.user) {
+    var currentLesson = req.user.completedLessons.indexOf(0) + 1
+    app.locals.currentLesson = currentLesson;
+  } else {
+    app.locals.currentLesson = 1
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  // get user from cookie, database, etc.
+  if (req.user) {
+    var nextLesson = app.locals.currentLesson < 10 ? app.locals.currentLesson + 1 : false;
+    app.locals.nextLesson = nextLesson;
+  } else {
+    app.locals.nextLesson = 1
+  }
+  next();
+});
+
 //Routes
 const quiz = require("./routes/quizRoutes");
 app.use("/", quiz);
