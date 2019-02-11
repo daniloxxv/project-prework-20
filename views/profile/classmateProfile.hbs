@@ -72,7 +72,7 @@
           </div>
         </div>
 
-
+        {{#if profile.githubUsername}}
         <div ref="myRef">
           <hr />
           <h3 class="mb-4">Latest Github Repos</h3>
@@ -100,7 +100,8 @@
 
                 <span>
                   <!-- Place this tag where you want the button to render. -->
-                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/archive/master.zip"
+                  <a class="github-button"
+                    href="https://github.com/{{this.owner.login}}/{{this.name}}/archive/master.zip"
                     data-icon="octicon-cloud-download" data-size="large"
                     aria-label="Download {{this.owner.login}}/{{this.name}} on GitHub">Download</a>
                 </span>
@@ -125,6 +126,7 @@
           </div>
           {{/each}}
         </div>
+        {{/if}}
       </div>
     </div>
   </div>

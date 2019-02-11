@@ -76,6 +76,8 @@
         </div>
 
 
+        {{#if profile.githubUsername}}
+
         <div ref="myRef">
           <hr />
           <h3 class="mb-4">Latest Github Repos</h3>
@@ -116,9 +118,14 @@
           </div>
           {{/each}}
         </div>
+
+        {{else}}
+              <hr />
+                <h3 class="mb-4">Include your github username on your profile to see your latest repos</h3>
+
+        {{/if}}
       </div>
     </div>
   </div>
 </div>
 </div>
-
