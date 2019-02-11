@@ -175,23 +175,22 @@ router.post("/profile", (req, res) => {
     res.status(400).json({ err: "handle is required" });
   }
 
-  if (req.body.handle) profileFields.handle = req.body.handle;
-  if (req.body.location) profileFields.location = req.body.location;
-  if (req.body.bio) profileFields.bio = req.body.bio;
-  if (req.body.githubUsername)
-    profileFields.githubUsername = req.body.githubUsername;
-  //Skills - split into array
-  if (typeof req.body.skills !== "undefined") {
-    profileFields.skills = req.body.skills.split(",").map(el => el.trim());
-  }
+  if (req.body.handle && /^[A-Za-z0-9_\-]{1,20}/.test(req.body.handle)) profileFields.handle = req.body.handle;
+  if (req.body.location && req.body.location.length < 100) profileFields.location = req.body.location;
+  if (req.body.bio && req.body.bio.length < 281) profileFields.bio = req.body.bio;
+  if (req.body.githubUsername) profileFields.githubUsername = req.body.githubUsername;
+
+  //Skills - split into array ignoring extra spaces and commas
+  if (typeof req.body.skills !== "undefined") profileFields.skills = req.body.skills.split(/,+ *[, ]*/).filter(el=>/^[A-Z\-a-z0-9 ]{1,20}$/.test(el));
+  
 
   //Social
   profileFields.social = {};
-  if (req.body.youtube) profileFields.social.youtube = req.body.youtube;
-  if (req.body.twitter) profileFields.social.twitter = req.body.twitter;
-  if (req.body.facebook) profileFields.social.facebook = req.body.facebook;
-  if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
-  if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
+  if (req.body.youtube && /^(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/)/.test(req.body.youtube)) profileFields.social.youtube = req.body.youtube;
+  if (req.body.twitter && /^(https?:\/\/)?(www\.)?twitter\.com\/([a-zA-Z0-9_]+)/.test(req.body.twitter)) profileFields.social.twitter = req.body.twitter;
+  if (req.body.facebook && /^(?:http:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/.test(req.body.facebook)) profileFields.social.facebook = req.body.facebook;
+  if (req.body.linkedin && /^http(s)?:\/\/([\w]+\.)?linkedin\.com\/in\/(A-z 0-9 _ -)\/?/.test(req.body.linkedin)) profileFields.social.linkedin = req.body.linkedin;
+  if (req.body.instagram && /^https?:\/\/(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/.test(req.body.instagram)) profileFields.social.instagram = req.body.instagram;
 
   Profile.findOne({ user: req.user._id })
     .then(profile => {

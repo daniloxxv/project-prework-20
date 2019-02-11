@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
   res.render("index", { data });
 });
 
-router.get("/lesson/:num", ensureLogin.ensureLoggedIn(),(req, res, next) => {
+router.get("/lessons/:num", ensureLogin.ensureLoggedIn(),(req, res, next) => {
   const lessonNumber = req.params.num;
   const user = req.user; 
 
@@ -30,7 +30,6 @@ router.get("/lesson/:num", ensureLogin.ensureLoggedIn(),(req, res, next) => {
             coment: commentas,
             lessonNumber: lessonNumber
           };
-          //console.log("The data is:", data);
           res.render(`lessons/lesson${lessonNumber}` , { data });
         })
   });
