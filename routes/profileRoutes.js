@@ -8,6 +8,9 @@ const User = require("../Model/User");
 const ensureLogin = require("connect-ensure-login");
 const axios = require("axios");
 
+//Cloudinary route
+const uploadCloud = require("../config/cloudinary.js");
+
 //Test Route
 router.get("/profile/test", (req, res) => {
   return res.json({ msg: req.body });
@@ -142,7 +145,9 @@ router.get(
         if (profile.githubUsername !== undefined || profile !== null) {
           axios
             .get(
-              `https://api.github.com/users/${profile.githubUsername}/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`
+              `https://api.github.com/users/${
+                profile.githubUsername
+              }/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`
             )
             .then(response => {
               latestRepos = response.data
@@ -184,22 +189,58 @@ router.post("/profile", (req, res) => {
     res.status(400).json({ err: "handle is required" });
   }
 
-  if (req.body.handle && /^[A-Za-z0-9_\-]{1,20}/.test(req.body.handle)) profileFields.handle = req.body.handle;
-  if (req.body.location && req.body.location.length < 100) profileFields.location = req.body.location;
-  if (req.body.bio && req.body.bio.length < 281) profileFields.bio = req.body.bio;
-  if (req.body.githubUsername) profileFields.githubUsername = req.body.githubUsername;
+  if (req.body.handle && /^[A-Za-z0-9_\-]{1,20}/.test(req.body.handle))
+    profileFields.handle = req.body.handle;
+  if (req.body.location && req.body.location.length < 100)
+    profileFields.location = req.body.location;
+  if (req.body.bio && req.body.bio.length < 281)
+    profileFields.bio = req.body.bio;
+  if (req.body.githubUsername)
+    profileFields.githubUsername = req.body.githubUsername;
 
   //Skills - split into array ignoring extra spaces and commas
-  if (typeof req.body.skills !== "undefined") profileFields.skills = req.body.skills.split(/,+ *[, ]*/).filter(el=>/^[A-Z\-a-z0-9 ]{1,20}$/.test(el));
-  
+  if (typeof req.body.skills !== "undefined")
+    profileFields.skills = req.body.skills
+      .split(/,+ *[, ]*/)
+      .filter(el => /^[A-Z\-a-z0-9 ]{1,20}$/.test(el));
 
   //Social
   profileFields.social = {};
-  if (req.body.youtube && /^(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/)/.test(req.body.youtube)) profileFields.social.youtube = req.body.youtube;
-  if (req.body.twitter && /^(https?:\/\/)?(www\.)?twitter\.com\/([a-zA-Z0-9_]+)/.test(req.body.twitter)) profileFields.social.twitter = req.body.twitter;
-  if (req.body.facebook && /^(?:http:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/.test(req.body.facebook)) profileFields.social.facebook = req.body.facebook;
-  if (req.body.linkedin && /^http(s)?:\/\/([\w]+\.)?linkedin\.com\/in\/(A-z 0-9 _ -)\/?/.test(req.body.linkedin)) profileFields.social.linkedin = req.body.linkedin;
-  if (req.body.instagram && /^https?:\/\/(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/.test(req.body.instagram)) profileFields.social.instagram = req.body.instagram;
+  if (
+    req.body.youtube &&
+    /^(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/)/.test(
+      req.body.youtube
+    )
+  )
+    profileFields.social.youtube = req.body.youtube;
+  if (
+    req.body.twitter &&
+    /^(https?:\/\/)?(www\.)?twitter\.com\/([a-zA-Z0-9_]+)/.test(
+      req.body.twitter
+    )
+  )
+    profileFields.social.twitter = req.body.twitter;
+  if (
+    req.body.facebook &&
+    /^(?:http:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/.test(
+      req.body.facebook
+    )
+  )
+    profileFields.social.facebook = req.body.facebook;
+  if (
+    req.body.linkedin &&
+    /^http(s)?:\/\/([\w]+\.)?linkedin\.com\/in\/(A-z 0-9 _ -)\/?/.test(
+      req.body.linkedin
+    )
+  )
+    profileFields.social.linkedin = req.body.linkedin;
+  if (
+    req.body.instagram &&
+    /^https?:\/\/(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/.test(
+      req.body.instagram
+    )
+  )
+    profileFields.social.instagram = req.body.instagram;
 
   Profile.findOne({ user: req.user._id })
     .then(profile => {
@@ -233,6 +274,53 @@ router.post("/profile", (req, res) => {
     })
     .catch(err => console.log(err));
 });
+
+// @route   GET  /profile/avatar
+// @desc    Create or edit avatar
+// @access  Private
+router.get(
+  "/profile/avatar/:user_id",
+  ensureLogin.ensureLoggedIn(),
+  (req, res) => {
+    Profile.findOne({ user: req.params.user_id })
+      .populate("user", ["username", "avatarUrl"])
+      .then(profile => {
+        if (!profile) {
+          return;
+        }
+        res.render("profile/profileAvatar", { profile });
+      })
+      .catch(err =>
+        res.status(404).json({ msg: "There is no profile for this user" })
+      );
+  }
+);
+
+// @route   POST  /profile/avatar
+// @desc    Uploads picture to cloudinary and assign it to the user
+// @access  Private
+router.post(
+  "/profile/avatar",
+  ensureLogin.ensureLoggedIn(),
+  uploadCloud.single("avatar"),
+  (req, res) => {
+    //Get the uploaded file info
+    const imgPath = req.file.secure_url;
+
+    User.findByIdAndUpdate(
+      { _id: req.body.id },
+      { $set: { avatarUrl: imgPath } },
+      { new: true }
+    )
+      .then(user => {
+        console.log(user);
+        res.redirect("/profile");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+);
 
 //end authentication routes
 module.exports = router;

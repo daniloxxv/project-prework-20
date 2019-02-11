@@ -212,4 +212,7 @@ p {
 .reply-comment {
   display: none; }
 
+#hidden-input {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */
