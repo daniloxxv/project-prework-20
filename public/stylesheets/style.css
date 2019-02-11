@@ -168,8 +168,8 @@ p {
 
 .classmate-profile, .create-profile {
   margin-top: 120px;
-  margin-bottom: 300px;
-  padding-bottom: 300px;
+  margin-bottom: 90px;
+  padding-bottom: 90px;
   margin-left: 25%; }
 
 .profiles {
@@ -208,5 +208,8 @@ p {
 
 .navbar {
   background-color: #1E2434; }
+
+.reply-comment {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

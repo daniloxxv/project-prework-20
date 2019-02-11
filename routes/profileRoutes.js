@@ -28,33 +28,28 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res) => {
         res.render("profile/newProfile", { user });
         return;
       }
-
-      console.log(profile)
-     
       if (profile.githubUsername !== undefined || profile !== null) {
         axios
           .get(
             `https://api.github.com/users/${
               profile.githubUsername
-            }/repos?per_page=100`
+            }/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`
           )
           .then(response => {
             latestRepos = response.data
               .sort((a, b) => (b.updated_at > a.updated_at ? 1 : -1))
               .slice(0, 3);
-            
+
             res.render("profile/profile", { profile, latestRepos });
             return;
           })
           .catch(error => {
             console.log(error);
           });
-      }else{
-        res.render("profile/profile", { profile});
+      } else {
+        res.render("profile/profile", { profile });
         return;
       }
-     
-
     })
     .catch(err => res.status(404).json(err));
 });
@@ -137,19 +132,33 @@ router.get(
   "/profile/user/classmate/:user_id",
   ensureLogin.ensureLoggedIn(),
   (req, res) => {
-    const user = req.user;
-
-    if (user === undefined) {
-      return res.render("auth/login");
-    }
-
     Profile.findOne({ user: req.params.user_id })
       .populate("user", ["username", "avatarUrl"])
       .then(profile => {
         if (!profile) {
           res.status(404).json(errors);
         }
-        res.render("profile/classmateProfile", { profile });
+
+        if (profile.githubUsername !== undefined || profile !== null) {
+          axios
+            .get(
+              `https://api.github.com/users/${profile.githubUsername}/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`
+            )
+            .then(response => {
+              latestRepos = response.data
+                .sort((a, b) => (b.updated_at > a.updated_at ? 1 : -1))
+                .slice(0, 3);
+
+              console.log(latestRepos);
+              res.render("profile/classmateProfile", { profile, latestRepos });
+              // return;
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        } else {
+          res.render("profile/classmateProfile", { profile });
+        }
       })
       .catch(err =>
         res.status(404).json({ msg: "There is no profile for this user" })
