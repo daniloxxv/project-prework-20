@@ -5,16 +5,20 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 .logo {
-height: 2.5rem;
-margin-left: 1rem;
-margin-right: 1rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.formpage, .classmates, .home, .learning, #error{
+.formpage,
+.classmates,
+.home,
+.learning,
+#error {
   margin-top: 10rem;
   margin-bottom: 10rem;
   display: flex;
@@ -22,7 +26,7 @@ margin-right: 1rem;
   align-items: center;
 }
 
-.home{
+.home {
   height: 55vh;
 }
 
@@ -31,25 +35,24 @@ margin-right: 1rem;
   align-self: center;
 }
 
-.sectiontitle{
+.sectiontitle {
   margin-bottom: 2rem;
 }
 
-.formbutton{
+.formbutton {
   margin-top: 1rem;
 }
 
-.navbar-collapse{
-  display:flex;
+.navbar-collapse {
+  display: flex;
   align-items: center;
 }
 
-.nav-item{
+.nav-item {
   margin-left: 1.5rem;
 }
 
-
-.profile-img{
+.profile-img {
   margin-top: 10px;
   margin-right: 11px;
   margin-bottom: 1px;
@@ -64,12 +67,12 @@ margin-right: 1rem;
   text-align: center;
 }
 
-.main{
+.main {
   justify-content: center;
   align-self: center;
 }
 
-.error{
+.error {
   color: red;
 }
 
@@ -85,11 +88,11 @@ margin-right: 1rem;
   display: flex;
   height: 2.2rem;
   justify-content: space-between;
-  background-color: #E9ECEF;
+  background-color: #e9ecef;
   z-index: 500;
 }
 
-.progress{
+.progress {
   height: 2.2rem;
   min-width: 35rem;
   max-width: 35rem;
@@ -98,8 +101,7 @@ margin-right: 1rem;
   align-items: center;
 }
 
-.progressbg{
-
+.progressbg {
   height: 2.2rem;
   width: 100%;
   display: flex;
@@ -107,17 +109,15 @@ margin-right: 1rem;
   align-items: center;
 }
 
-.progress-bar{
- height: 2.2rem;
- max-width: 30rem;
+.progress-bar {
+  height: 2.2rem;
+  max-width: 30rem;
 }
 
-.progresslabel{
+.progresslabel {
   font-size: 0.9rem;
   margin-right: 0.5rem;
 }
-
-
 
 /* classmates */
 
@@ -127,7 +127,7 @@ margin-right: 1rem;
 
 .landing {
   position: relative;
-  background: url('../img/showcase.jpg') no-repeat;
+  background: url("../img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   margin-top: -24px;
@@ -162,117 +162,113 @@ margin-right: 1rem;
 
 /*learning*/
 
-.learning{
-  font-size: 1rem; 
+.learning {
+  font-size: 1rem;
 }
-.title{
+.title {
   font-weight: 600;
   font-size: 2.5rem;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.commentable-section{
+.commentable-section {
   margin-top: 1.2rem;
 }
 
-.sublead{
+.sublead {
   margin-top: 1rem;
   font-size: 1.2rem;
   font-weight: 100;
+  text-align: center;
 }
 
 .lessonpic {
-  width: 600px;
-  padding-left: 40px;
-  margin: 1.5rem;
-  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
-.quiztitle{
+.quiztitle {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.quiz{
+.quiz {
   border: solid 1px;
   border-color: #000000;
   padding: 2rem;
 }
 
-.quizinput{
+.quizinput {
   margin-top: 1rem;
   margin-right: 1rem;
 }
 
-
-
 p {
   line-height: 1.4rem;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
-.classmate-profile, .create-profile {
-  margin-top:120px;
-  margin-bottom:90px;
-  padding-bottom:90px;
+.classmate-profile,
+.create-profile {
+  margin-top: 120px;
+  margin-bottom: 90px;
+  padding-bottom: 90px;
   margin-left: 25%;
 }
 
-.profiles{
-  margin-top:120px;
+.profiles {
+  margin-top: 120px;
   margin-bottom: 150px;
 }
 
-.edit-profile{
-  margin-top:100px;
-  margin-bottom:100px;
+.edit-profile {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .profile {
-  margin-top:120px;
-  margin-bottom:100px;
-
+  margin-top: 120px;
+  margin-bottom: 100px;
 }
 
-.footer{
+.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 50px;
   line-height: 60px;
-  padding-left:3rem;
-  padding-right:1rem;
+  padding-left: 3rem;
+  padding-right: 1rem;
   color: #ffffff;
-  background-color: #1E2434;
+  background-color: #1e2434;
   z-index: 500;
-
 }
 
-.social{
+.social {
   width: 12rem;
 }
-.social-fa{
+.social-fa {
   margin-right: 0.8rem;
 }
 
-.social-link{
+.social-link {
   color: white;
   text-decoration: none;
 }
 
-.navbar{
-  background-color: #1E2434;
-
+.navbar {
+  background-color: #1e2434;
 }
 
-.reply-comment{
-
-  display:none;
+.reply-comment {
+  display: none;
 }
 
 //Avatar route
 
-#hidden-input{
-
+#hidden-input {
   display: none;
-
 }
