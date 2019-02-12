@@ -24,7 +24,7 @@ try {
 const User = require("./Model/User");
 
 mongoose
-  .connect(process.env.MONGODB, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`,
@@ -119,7 +119,9 @@ app.use((req, res, next) => {
   // get user from cookie, database, etc.
   const user = req.user;
   if (user) {
-    app.locals.userName = user.username[0].toUpperCase()+user.username.slice(1,user.username.length);
+    app.locals.userName =
+      user.username[0].toUpperCase() +
+      user.username.slice(1, user.username.length);
     app.locals.avatar = user.avatarUrl;
   } else {
     app.locals.userName = "";
@@ -131,10 +133,13 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // get user from cookie, database, etc.
   if (req.user) {
-    var progress = (req.user.completedLessons.filter(el => el > 0).length / req.user.completedLessons.length)*100;
+    var progress =
+      (req.user.completedLessons.filter(el => el > 0).length /
+        req.user.completedLessons.length) *
+      100;
     app.locals.progress = progress;
   } else {
-    app.locals.progress = 0
+    app.locals.progress = 0;
   }
   next();
 });
@@ -142,10 +147,10 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // get user from cookie, database, etc.
   if (req.user) {
-    var currentLesson = req.user.completedLessons.indexOf(0) + 1
+    var currentLesson = req.user.completedLessons.indexOf(0) + 1;
     app.locals.currentLesson = currentLesson;
   } else {
-    app.locals.currentLesson = 1
+    app.locals.currentLesson = 1;
   }
   next();
 });
@@ -153,10 +158,11 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // get user from cookie, database, etc.
   if (req.user) {
-    var nextLesson = app.locals.currentLesson < 10 ? app.locals.currentLesson + 1 : false;
+    var nextLesson =
+      app.locals.currentLesson < 10 ? app.locals.currentLesson + 1 : false;
     app.locals.nextLesson = nextLesson;
   } else {
-    app.locals.nextLesson = 1
+    app.locals.nextLesson = 1;
   }
   next();
 });
