@@ -7,22 +7,36 @@
     <h1 class="display-4 text-center">Edit Your Avatar</h1>
     <p class="lead text-center">Add an image of your choice</p>
 
+
+
+
     <form action="/profile/avatar" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         {{#if profile.user.avataUrl}}
-        <input type="file" class="form-control form-control-lg" placeholder="avatar" name="avatar"
-          value="{{profile.user.avatarUrl}}" required />
+
+
+        <input id="input-b2" type="file" class="file" name="avatar" data-show-preview="true" required>
+        {{!-- <input type="file" class="form-control form-control-lg" placeholder="avatar" name="avatar"
+          value="{{profile.user.avatarUrl}}" required /> --}}
+
         {{else}}
-        <input type="file" class="form-control form-control-lg" placeholder="avatar" name="avatar"
-          value="{{profile.user.avatarUrl}}" required />
+
+        <input id="input-b2" type="file" class="file" name="avatar" data-show-preview="true" required>
+        {{!-- <input type="file" class="form-control form-control-lg" placeholder="avatar" name="avatar"
+          value="{{profile.user.avatarUrl}}" required /> --}}
+
         {{/if}}
         <small class="form-text text-muted">A picture on jpg,png or gif format</small>
       </div>
 
       <input type="text" class="form-control form-control-lg" placeholder="id" name="id" value="{{profile.user._id}}"
         id="hidden-input">
-      <input type="submit" class="btn btn-info btn-block mt-4" value="Submit" />
+
+      <button type="submit" class="btn btn-info btn-block mt-4" id="btn-submit">Submit</button>
     </form>
   </div>
-
 </div>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/javascripts/fileInputBehaviour.js"></script>
