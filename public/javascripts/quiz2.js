@@ -1,7 +1,6 @@
 let submitQuiz2 = document.getElementById("submitQuiz2");
 submitQuiz2.addEventListener('click', e => {
   let allowSubmit = false;
-  console.log(document.forms[0])
   let quiz2answer = document.forms[0][0].value;
   let quiz2helper = document.getElementById("quiz2helper");
   if(!quiz2answer){

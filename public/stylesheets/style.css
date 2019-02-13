@@ -42,14 +42,15 @@ a {
 .nav-item {
   margin-left: 1.5rem; }
 
+.right-item {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  line-height: 2.5rem; }
+
 .profile-img {
-  margin-top: 10px;
-  margin-right: 11px;
-  margin-bottom: 1px;
-  float: left;
-  /* Interchange this value depending on prefering width vs. height */
-  width: 31px;
-  height: 35px; }
+  width: 40px;
+  height: 40px; }
 
 #hello {
   text-align: center; }
@@ -160,18 +161,19 @@ a {
   font-weight: 600; }
 
 .quiz {
+  display: flex;
+  flex-direction: column;
   border: solid 1px;
   border-color: #000000;
   padding: 2rem; }
 
 .quizinput {
   margin-top: 1rem;
+  margin-left: 1rem;
   margin-right: 1rem; }
 
 p {
-  line-height: 1.4rem;
-  text-align: justify;
-  text-justify: inter-word; }
+  line-height: 1.4rem; }
 
 .classmate-profile,
 .create-profile {
@@ -215,12 +217,18 @@ p {
   text-decoration: none; }
 
 .navbar {
-  background-color: #1e2434; }
+  background-color: #1e2434;
+  height: 4rem; }
 
 .reply-comment {
   display: none; }
 
 #hidden-input {
   display: none; }
+
+.right-menu {
+  display: flex;
+  justify-content: space-around;
+  width: 300px; }
 
 /*# sourceMappingURL=style.css.map */

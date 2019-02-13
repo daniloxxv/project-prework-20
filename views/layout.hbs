@@ -46,20 +46,20 @@
           <a class="nav-link" href="/learning">Learning</a>
         </li>
       </ul>
-      <ul class="navbar-nav text-right">
+      <ul class="navbar-nav right-menu text-right">
         {{#if userName}}
-        <li class="nav-item">
+        <li class="nav-item right-item">
           {{#if avatar}}
-          <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img"
+          <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img right-item"
             style="background:url({{{avatar}}})50% 50% no-repeat;background-size: auto 100%; "></div></a>
           {{else}}
-           <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img"
+           <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img right-item"
             style="background:url(/images/placeholder2.png)50% 50% no-repeat;background-size: auto 100%; "></div></a>
 
           {{/if}}
-          <a class="nav-link" id="hello" href="/profile"> Hello {{userName}}</a>
+          <a class="nav-link" id="hello" href="/profile"> Hello, {{userName}}</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item right-item logout">
           <a class="nav-link" href="/logout">logout</a>
         </li>
         {{else}}
