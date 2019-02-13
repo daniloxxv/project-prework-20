@@ -50,11 +50,11 @@
         {{#if userName}}
         <li class="nav-item">
           {{#if avatar}}
-          <div class="img-rounded profile-img"
-            style="background:url({{{avatar}}})50% 50% no-repeat;background-size: auto 100%; "></div>
+          <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img"
+            style="background:url({{{avatar}}})50% 50% no-repeat;background-size: auto 100%; "></div></a>
           {{else}}
-          <div class="img-rounded profile-img"
-            style="background:url(/images/placeholder2.png)50% 50% no-repeat;background-size: auto 100%; "></div>
+           <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img"
+            style="background:url(/images/placeholder2.png)50% 50% no-repeat;background-size: auto 100%; "></div></a>
 
           {{/if}}
           <a class="nav-link" id="hello" href="/profile"> Hello {{userName}}</a>

@@ -9,8 +9,8 @@ const userSchema = new Schema({
   email:  String,
   avatarUrl:String,
   password: String,
-  completedLessons: {type: Array, default: [0,0,0,0,0,0,0,0,0,0]},
-  quizAnswers: {type: Array, default: ["","","","","","","","","",""]}
+  completedLessons: {type: Array, default: [0,0,0,0,0]},
+  quizAnswers: {type: Array, default: ["","","","",""]}
 },
   {
   timestamps: {
