@@ -13,7 +13,6 @@ a {
 
 .formpage,
 .classmates,
-.home,
 .learning,
 #error {
   margin-top: 10rem;
@@ -23,7 +22,10 @@ a {
   align-items: center; }
 
 .home {
-  height: 55vh; }
+  height: 370px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .form {
   justify-content: center;
@@ -236,8 +238,14 @@ p {
 .quizcheckbox {
   margin-left: 1rem; }
 
+.card-img-top {
+  width: 100%;
+  height: 1%; }
+
 @media (max-width: 576px) {
-  #breadcrumblist, .signoff, .socialicons {
+  #breadcrumblist,
+  .signoff,
+  .socialicons {
     display: none; }
   .footer {
     justify-content: flex-end; } }

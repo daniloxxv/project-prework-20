@@ -1,9 +1,96 @@
-<section class = "home d-flex">
+<section class="home d-flex">
   <div class="main">
-  {{#if data.user}}
+    {{#if data.user}}
     <h1>Welcome, {{userName}}</h1>
+    <h2>Lessons</h2>
+  </div>
+</section>
+
+<section>
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-sm-4">
+
+
+
+        <div class="card mb-3">
+          <img class="card-img-top"
+            src="https://advwebsite-andovarpteltd.netdna-ssl.com/wp-content/uploads/2016/04/what-is-html5-and-what-does-it-mean-for-localization-cover.jpg"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card mb-3">
+          <img class="card-img-top"
+            src="https://www.abeautifulsite.net/uploads/2012/12/css3-logo.png?width=600&key=55b56b7cb4f7ad8d740b1bd92848d16a1e07eda4a4a9130eea4cf23e2a554ca7"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <a href="#" class="btn btn-primary">Go to lesson</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-4">
+        <div class="card mb-3">
+          <img class="card-img-top"
+            src="data:image/png;base64,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"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-4">
+        <div class="card mb-3">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOmyJHi_nMo9NBvNtqaLN650n277AvRqTo2MQEtYVwRI1gVBWpaQ"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card mb-3">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOmyJHi_nMo9NBvNtqaLN650n277AvRqTo2MQEtYVwRI1gVBWpaQ"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   {{else}}
-    <h2>Please login or signup to access the course content</h2>
+  <h2>Please login or signup to access the course content</h2>
   {{/if}}
-</div>
+
+
 </section>
