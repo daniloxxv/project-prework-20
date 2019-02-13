@@ -217,18 +217,12 @@ p {
   text-decoration: none; }
 
 .navbar {
-  background-color: #1e2434;
-  height: 4rem; }
+  background-color: #1e2434; }
 
 .reply-comment {
   display: none; }
 
 #hidden-input {
   display: none; }
-
-.right-menu {
-  display: flex;
-  justify-content: space-around;
-  width: 300px; }
 
 /*# sourceMappingURL=style.css.map */
