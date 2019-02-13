@@ -20,7 +20,7 @@ router.get("/lessons",  ensureLogin.ensureLoggedIn(),(req, res, next) => {
 router.get("/lessons/:num", ensureLogin.ensureLoggedIn(),(req, res, next) => {
   const lessonNumber = req.params.num;
   console.log(lessonNumber)
-  if (Number(lessonNumber) > 5 || Number(lessonNumber) < 1 || /[^1-5]/.test(lessonNumber)){
+  if (!/^[1-5]$/.test(lessonNumber)){
     res.redirect('/')
   }
   const user = req.user; 

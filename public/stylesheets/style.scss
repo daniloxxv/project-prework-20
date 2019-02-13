@@ -104,7 +104,8 @@ a {
 
 .progressbg {
   height: 2.2rem;
-  width: 100%;
+  min-width: 30rem;
+  max-width: 30rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -112,7 +113,8 @@ a {
 
 .progress-bar {
   height: 2.2rem;
-  max-width: 30rem;
+  max-width: 28rem;
+
 }
 
 .progresslabel {
@@ -281,8 +283,11 @@ p {
 }
 
 #next-lesson{
-  margin: 0.25rem;
+  margin: 0.35rem;
   color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
 }
 
 .quizcheckbox{
