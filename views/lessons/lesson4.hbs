@@ -1,0 +1,97 @@
+<section class="learning">
+  <div id="commentable-container" class="container commentable-container col-md-6">
+    <h1 class="title">
+      Lesson 4: JavaScript - the programming language for the web
+    </h1>
+    <cite class="sublead">
+        This will be your worst enemy... and your new best friend
+    </cite>
+
+    <p data-section-id="13" class="commentable-section">
+      <strong>JavaScript</strong>, often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. It is a language that is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.
+    </p>
+    <p data-section-id="14" class="commentable-section">
+      Alongside HTML and CSS, JavaScript is one of the three core technologies of the World Wide Web. <strong>JavaScript enables interactive web pages and thus is an essential part of web applications.</strong> The vast majority of websites use it, and all major web browsers have a dedicated JavaScript engine to execute it.
+    </p>
+
+    <img src="http://devhumor.com/content/uploads/images/August2017/js-strongtyped.png"
+      alt="JavaScript: a love story" class="lessonpic img-fluid">
+
+    <p data-section-id="15" class="commentable-section">
+      <strong>As a multi-paradigm language, JavaScript supports event-driven, functional, and imperative (including object-oriented and prototype-based) programming styles.</strong> It has APIs for working with text, arrays, dates, regular expressions, and the DOM, but the language itself does not include any I/O, such as networking, storage, or graphics facilities, relying for these upon the host environment in which it is embedded. CSS also has rules for alternate formatting if the content is accessed on a mobile device.
+    </p>
+
+    <p data-section-id="16" class="commentable-section">
+      Initially only implemented client-side in web browsers, <strong>JavaScript engines are now embedded in many other types of host software, including server-side in web servers and databases</strong>, and in non-web programs such as word processors and PDF software, and in runtime environments that make JavaScript available for writing mobile and desktop applications, including desktop widgets.
+    <small class="form-text text-muted">Text from Wikipedia.com</small>
+    </p>
+
+
+    {{!-- This is the handlebar helper that we registered--}} {{assign 'existingComments' this.data.coment}}
+
+    <div class="quiz form-check">
+        <h3 class="quiztitle">Quiz 4: JavaScript Variables</h3>
+        <form id='formQuiz4' action="/quiz4" method="post" class="form-group">
+          <p>
+          <label for="quiz4">As an extra reading for this lesson, we have included W3Schools resource about JavaScript variable names. Based on the text, which of the following would be valid names for a JavaScript variable? Please select all that apply.
+          </p>
+          
+            <label class="form-check-label d-block quizcheckbox">
+              <input type="checkbox" class="form-check-input" name="checkboxes" id="option1" value="option1">
+              1stVar
+            </label>
+         
+         
+            <label class="form-check-label d-block quizcheckbox">
+              <input type="checkbox" class="form-check-input" name="checkboxes" id="option2" value="option2">
+              _newVar
+            </label>
+       
+       
+            <label class="form-check-label d-block quizcheckbox">
+              <input type="checkbox" class="form-check-input" name="checkboxes" id="option3" value="option3">
+              class
+            </label>
+          
+          
+            <label class="form-check-label d-block quizcheckbox">
+              <input type="checkbox" class="form-check-input" name="checkboxes" id="option4" value="option4">
+                  foo
+              </label>
+          
+         
+            <label class="form-check-label d-block quizcheckbox">
+              <input type="checkbox" class="form-check-input" name="checkboxes" id="option5" value="option5">
+                  New
+              </label>
+          
+          <p> 
+          <input id='submitQuiz4' type="submit" value="Submit" class="btn btn-success quizinput">
+          </p>
+        </form>
+        <small id="quiz4helper" class="form-text text-muted">{{{successMessage}}}</small>
+    </div>
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/javascripts/side-comments.js"></script>
+<script src="/javascripts/test_data.js"></script>
+<script type="text/javascript">
+
+  //Existing comments
+  var existingComments = [{{{@root.existingComments}}}];
+  console.log(existingComments)
+  //Construimos el objeto del usuario actual
+  var currentUsera = {
+    id: `{{this.data.user.id}}`,
+    avatarUrl: `{{this.data.user.avatarUrl}}`,
+    authorUrl: `{{this.data.user.authorUrl}}`,
+    name: `{{this.data.user.username}}`
+  };
+</script>
+
+<script src="/javascripts/learning.js"></script>
+<script src="/javascripts/quiz4.js"></script>

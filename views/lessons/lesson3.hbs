@@ -32,7 +32,7 @@
 
     <div class="quiz form-check">
         <h3 class="quiztitle">Quiz 3: CSS: What is it good for?</h3>
-        <form action="/quiz3" method="post" class="form-inline">
+        <form id='formQuiz3' action="/quiz3" method="post" class="form-inline">
           <p>
           <label for="quiz3">Let's see if you were paying attention to the text. Which of these alternatives best describes the purpose of CSS?
           </p>
@@ -64,7 +64,8 @@
 
 
 
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="/javascripts/side-comments.js"></script>
 <script src="/javascripts/test_data.js"></script>
 <script type="text/javascript">
@@ -80,5 +81,6 @@
     name: `{{this.data.user.username}}`
   };
 </script>
+
 <script src="/javascripts/learning.js"></script>
-<script src="/javascripts/quiz2.js"></script>
+<script src="/javascripts/quiz3.js"></script>

@@ -31,14 +31,24 @@ router.post("/quiz1", (req, res) => {
  });
 
  router.post("/quiz3", (req, res) => {
-  let answer = req.body.quiz3;
   let username = req.user.username;
   User.findOneAndUpdate(
     {username: username},
-    {$set: {"quizAnswers.2": answer, "completedLessons.2":1}}
+    {$set: {"quizAnswers.2": "option2", "completedLessons.2":1}}
   )
   .then(()=>{
     res.redirect("/lessons/3")
+  })
+ });
+
+ router.post("/quiz4", (req, res) => {
+  let username = req.user.username;
+  User.findOneAndUpdate(
+    {username: username},
+    {$set: {"quizAnswers.3": "2, 4 and 5", "completedLessons.3":1}}
+  )
+  .then(()=>{
+    res.redirect("/lessons/4")
   })
  });
 
