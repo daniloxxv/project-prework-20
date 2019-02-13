@@ -229,6 +229,10 @@ p {
 #hidden-input {
   display: none; }
 
+#next-lesson {
+  margin: 0.25rem;
+  color: white; }
+
 @media (max-width: 576px) {
   #breadcrumblist, .signoff, .socialicons {
     display: none; }
