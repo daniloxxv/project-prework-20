@@ -41,4 +41,15 @@ router.post("/quiz1", (req, res) => {
   })
  });
 
+ router.post("/quiz4", (req, res) => {
+  let username = req.user.username;
+  User.findOneAndUpdate(
+    {username: username},
+    {$set: {"quizAnswers.3": "2, 4 and 5", "completedLessons.3":1}}
+  )
+  .then(()=>{
+    res.redirect("/lessons/4")
+  })
+ });
+
 module.exports = router;
