@@ -36,7 +36,7 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res) => {
           .get(
             `https://api.github.com/users/${
               profile.githubUsername
-            }/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`
+            }/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`,
           )
           .then(response => {
             latestRepos = response.data
@@ -96,7 +96,7 @@ router.get(
         res.json(profile);
       })
       .catch(err => res.status(404).json(err));
-  }
+  },
 );
 
 // @route   GET  /profile/user/:user_id
@@ -123,9 +123,9 @@ router.get(
         res.render("profile/editProfile", { profile });
       })
       .catch(err =>
-        res.status(404).json({ msg: "There is no profile for this user" })
+        res.status(404).json({ msg: "There is no profile for this user" }),
       );
-  }
+  },
 );
 
 // @route   GET  /profile/user/:user_id
@@ -147,7 +147,7 @@ router.get(
             .get(
               `https://api.github.com/users/${
                 profile.githubUsername
-              }/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`
+              }/repos?per_page=100&client_id=d6c15594fd4645fbc06e&client_secret=1941b3aff94e89b709b19f27eef75b17aa353c1f`,
             )
             .then(response => {
               latestRepos = response.data
@@ -166,9 +166,9 @@ router.get(
         }
       })
       .catch(err =>
-        res.status(404).json({ msg: "There is no profile for this user" })
+        res.status(404).json({ msg: "There is no profile for this user" }),
       );
-  }
+  },
 );
 
 // @route   POST  /profile
@@ -209,35 +209,35 @@ router.post("/profile", (req, res) => {
   if (
     req.body.youtube &&
     /^(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/)/.test(
-      req.body.youtube
+      req.body.youtube,
     )
   )
     profileFields.social.youtube = req.body.youtube;
   if (
     req.body.twitter &&
     /^(https?:\/\/)?(www\.)?twitter\.com\/([a-zA-Z0-9_]+)/.test(
-      req.body.twitter
+      req.body.twitter,
     )
   )
     profileFields.social.twitter = req.body.twitter;
   if (
     req.body.facebook &&
-    /^(?:http:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/.test(
-      req.body.facebook
+    /^(?:https:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/.test(
+      req.body.facebook,
     )
   )
     profileFields.social.facebook = req.body.facebook;
   if (
     req.body.linkedin &&
-    /^http(s)?:\/\/([\w]+\.)?linkedin\.com\/in\/(A-z 0-9 _ -)\/?/.test(
-      req.body.linkedin
+    /^http(s)?:\/\/([\w]+\.)?linkedin\.com\/in\/(A-zÀ-ú-ñ 0-9 _-)\/?/.test(
+      req.body.linkedin,
     )
   )
     profileFields.social.linkedin = req.body.linkedin;
   if (
     req.body.instagram &&
     /^https?:\/\/(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/.test(
-      req.body.instagram
+      req.body.instagram,
     )
   )
     profileFields.social.instagram = req.body.instagram;
@@ -249,7 +249,7 @@ router.post("/profile", (req, res) => {
         Profile.findOneAndUpdate(
           { user: req.user._id },
           { $set: profileFields },
-          { new: true }
+          { new: true },
         )
           .then(profile => {
             res.redirect("profile");
@@ -291,9 +291,9 @@ router.get(
         res.render("profile/profileAvatar", { profile });
       })
       .catch(err =>
-        res.status(404).json({ msg: "There is no profile for this user" })
+        res.status(404).json({ msg: "There is no profile for this user" }),
       );
-  }
+  },
 );
 
 // @route   POST  /profile/avatar
@@ -310,7 +310,7 @@ router.post(
     User.findByIdAndUpdate(
       { _id: req.body.id },
       { $set: { avatarUrl: imgPath } },
-      { new: true }
+      { new: true },
     )
       .then(user => {
         console.log(user);
@@ -319,7 +319,7 @@ router.post(
       .catch(err => {
         console.log(err);
       });
-  }
+  },
 );
 
 //end authentication routes
