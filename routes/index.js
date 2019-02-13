@@ -42,6 +42,11 @@ router.get("/classmates",  ensureLogin.ensureLoggedIn(),(req, res, next) => {
   res.render("classmates", { data });
 });
 
+router.get("/lessons",  ensureLogin.ensureLoggedIn(),(req, res, next) => {
+  res.redirect("/");
+});
+
+
 router.get("/*", (req, res, next) => {
   res.render("error");
 });

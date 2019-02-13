@@ -7,7 +7,7 @@ a {
   color: #00b7ff; }
 
 .logo {
-  height: 2.5rem;
+  height: 2.8rem;
   margin-left: 1rem;
   margin-right: 1rem; }
 
@@ -97,6 +97,8 @@ a {
 
 .progresslabel {
   font-size: 0.9rem;
+  margin-top: 0.3rem;
+  align-self: center;
   margin-right: 0.5rem; }
 
 /* classmates */
@@ -195,6 +197,8 @@ p {
   margin-bottom: 100px; }
 
 .footer {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -228,7 +232,7 @@ p {
 @media (max-width: 576px) {
   #breadcrumblist, .signoff, .socialicons {
     display: none; }
-  #next-lesson {
+  .footer {
     justify-content: flex-end; } }
 
 /*# sourceMappingURL=style.css.map */
