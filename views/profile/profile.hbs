@@ -34,25 +34,28 @@
                 <p class="lead text-center">Developer at Microsoft</p> --}}
                 <p> {{profile.location}}</p>
                 <p>
-                  <a class="text-white p-2" href="https://google.com">
-                    <i class="fas fa-globe fa-2x"></i>
-                  </a>
-
+          
+                  {{#if profile.social.twitter}}
                   <a class="text-white p-2" href="{{profile.social.twitter}}">
                     <i class="fab fa-twitter fa-2x"></i>
                   </a>
+                  {{/if}} {{#if profile.social.facebook}}
                   <a class="text-white p-2" href="{{profile.social.facebook}}">
                     <i class="fab fa-facebook fa-2x"></i>
                   </a>
+                  {{/if}} {{#if profile.social.linkedin}}
                   <a class="text-white p-2" href={{profile.social.linkedin}}>
                     <i class="fab fa-linkedin fa-2x"></i>
                   </a>
+                  {{/if}} {{#if profile.social.youtube}}
                   <a class="text-white p-2" href={{profile.social.youtube}}>
                     <i class="fab fa-youtube fa-2x"></i>
                   </a>
+                  {{/if}} {{#if profile.social.instagram}}
                   <a class="text-white p-2" href={{profile.social.instagram}}>
                     <i class="fab fa-instagram fa-2x"></i>
                   </a>
+                  {{/if}}
                 </p>
               </div>
             </div>
@@ -98,26 +101,23 @@
                 <p>{{this.description}}</p>
               </div>
               <div class="col-md-6">
-                {{!-- <span>
-                <!-- Place this tag where you want the button to render. -->
-                <a class="github-button" href="https://github.com/{{this.owner.login}}" data-size="large" data-show-count="true"
-                  aria-label="Follow @{{this.owner.login}} on GitHub">Follow @{{this.owner.login}}</a>
-                  </span> --}}
+                {{!--
                 <span>
-                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}"
-                    data-icon="octicon-star" data-size="large" data-show-count="true"
-                    aria-label="Star {{this.owner.login}}/{{this.name}} on GitHub">Star</a>
+                  <!-- Place this tag where you want the button to render. -->
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}" data-size="large" data-show-count="true" aria-label="Follow @{{this.owner.login}} on GitHub">Follow @{{this.owner.login}}</a>
+                </span> --}}
+                <span>
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}" data-icon="octicon-star" data-size="large"
+                    data-show-count="true" aria-label="Star {{this.owner.login}}/{{this.name}} on GitHub">Star</a>
                 </span>
                 <span>
-                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/subscription"
-                    data-icon="octicon-eye" data-size="large" data-show-count="true"
-                    aria-label="Watch {{this.name}}/{{this.name}} on GitHub">Watch</a>
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/subscription" data-icon="octicon-eye"
+                    data-size="large" data-show-count="true" aria-label="Watch {{this.name}}/{{this.name}} on GitHub">Watch</a>
                 </span>
 
                 <span>
-                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/fork"
-                    data-icon="octicon-repo-forked" data-size="large" data-show-count="true"
-                    aria-label="Fork {{this.owner.login}}/{{this.name}} on GitHub">Fork</a>
+                  <a class="github-button" href="https://github.com/{{this.owner.login}}/{{this.name}}/fork" data-icon="octicon-repo-forked"
+                    data-size="large" data-show-count="true" aria-label="Fork {{this.owner.login}}/{{this.name}} on GitHub">Fork</a>
                 </span>
               </div>
             </div>
