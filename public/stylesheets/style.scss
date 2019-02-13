@@ -276,3 +276,12 @@ p {
   display: none;
 }
 
+@media (max-width: 576px) {
+  #breadcrumblist, .signoff, .socialicons {
+    display: none;
+  }
+  #next-lesson {
+    justify-content: flex-end;
+  }
+
+}
