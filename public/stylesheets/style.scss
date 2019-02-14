@@ -118,7 +118,6 @@ a {
 .progress-bar {
   height: 2.2rem;
   max-width: 30rem;
-
 }
 
 .progresslabel {
@@ -297,16 +296,15 @@ p {
   margin-left: 1rem;
 }
 
-.quiz5container{
+.quiz5container {
   justify-content: space-between;
 
-  label{
+  label {
     line-height: 2.2rem;
   }
 }
 
-.custom-select{
-
+.custom-select {
   width: 60%;
 }
 
@@ -325,7 +323,6 @@ img.card-img-top {
   text-align: center;
 }
 
-
 @media (max-width: 576px) {
   #breadcrumblist,
   .signoff,
@@ -342,18 +339,18 @@ img.card-img-top {
     justify-self: flex-end;
     min-width: 16rem;
     max-width: 16rem;
-
   }
-  
-  .progressbg {
 
+  .progressbg {
     min-width: 16rem;
     max-width: 16rem;
-
   }
-  
+
   .progress-bar {
     max-width: 16rem;
   }
 
+  .close fileinput-remove {
+    display: none;
+  }
 }
