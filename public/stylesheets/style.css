@@ -244,7 +244,6 @@ p {
 .quizcheckbox {
   margin-left: 1rem; }
 
-<<<<<<< HEAD
 .quiz5container {
   justify-content: space-between; }
   .quiz5container label {
@@ -252,7 +251,7 @@ p {
 
 .custom-select {
   width: 60%; }
-=======
+
 .card-img-top {
   width: 100%;
   border-style: solid; }
@@ -261,8 +260,8 @@ img.card-img-top {
   height: 125px; }
 
 .lesson-card {
-  border-style: solid; }
->>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
+  border-style: solid;
+  text-align: center; }
 
 @media (max-width: 576px) {
   #breadcrumblist,

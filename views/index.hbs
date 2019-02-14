@@ -1,79 +1,80 @@
 {{#if data.user}}
 
 <section>
-  <div class="container" style="margin-bottom:10%;margin-top:8%">
+  <div class="container d-flex justify-content-center" style="margin-bottom:10%;margin-top:8%">
 
-    <div class="row">
 
-      <div class="col-sm-12">
-        <h1 class="title">Avaiable Lessons</h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="card mb-3">
+      <div class="col-sm-12 col-md-8">
+        <h1 class="title">Available Lessons</h1>
+        <div class = row>
+        <div class="card mb-3 col-md-6">
           <img class="card-img-top" src="Images/git.png" alt="Card image cap">
           <div class="card-body lesson-card">
-            <h5 class="card-title">Lesson 1:Distributed Version</h5>
+            <h5 class="card-title">Lesson 1: Git & Version Control</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
+            <div class="col-md-12 d-flex justify-content-center">
             <a href="/lessons/1" class="btn btn-info">Go to lesson</a>
+            </div>
           </div>
         </div>
-      </div>
 
 
-      <div class="col-sm-4">
-        <div class="card mb-3">
+        <div class="card mb-3 col-md-6">
           <img class="card-img-top" src="/images/html.jpg" alt="Card image cap">
           <div class="card-body lesson-card">
             <h5 class="card-title">Lesson 2: HTML basics</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
-
+          <div class="col-md-12 d-flex justify-content-center">
             <a href="/lessons/2" class="btn btn-info">Go to lesson</a>
+          </div>  
           </div>
         </div>
-      </div>
+        </div>
 
-      <div class="col-sm-4">
-        <div class="card mb-3">
+        <div class="row">
+        <div class="card mb-3 col-md-6">
           <img class="card-img-top" src="/images/css3.jpg" alt="Card image cap">
           <div class="card-body lesson-card">
-            <h5 class="card-title">Lesson 3: Time to make it pretty</h5>
+            <h5 class="card-title">Lesson 3: Prettifying with CSS</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
+          <div class="col-md-12 d-flex justify-content-center">
             <a href="/lessons/3" class="btn btn-info">Go to lesson</a>
           </div>
+          </div>
         </div>
-      </div>
+     
 
-      <div class="col-sm-4">
-        <div class="card mb-3">
+        <div class="card mb-3 col-md-6">
           <img class="card-img-top" src="/images/javascript.jpg" alt="Card image cap">
           <div class="card-body lesson-card">
-            <h5 class="card-title">Lesson 4: Introduction to javascript part 1</h5>
+            <h5 class="card-title">Lesson 4: JS #1 - Variables</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
+          <div class="col-md-12 d-flex justify-content-center">
             <a href="/lessons/4" class="btn btn-info">Go to lesson</a>
           </div>
+          </div>
         </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="card mb-3">
+</div>
+<div class="row d-flex justify-content-center">
+        <div class="card mb-3 col-md-6">
           <img class="card-img-top" src="/images/javascript.jpg" alt="Card image cap">
           <div class="card-body lesson-card">
-            <h5 class="card-title">Lesson 5: Introduction to javascript part 2</h5>
+            <h5 class="card-title">Lesson 5: JS #2 - Data Types</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
+          <div class="col-md-12 d-flex justify-content-center">
             <a href="/lessons/5" class="btn btn-info">Go to lesson</a>
+          </div>
           </div>
         </div>
       </div>
+      </div>
     </div>
-  </div>
+  
 
   {{else}}
   <h2 class="home">Please login or signup to access the course content</h2>

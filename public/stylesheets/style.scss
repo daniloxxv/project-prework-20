@@ -117,12 +117,8 @@ a {
 
 .progress-bar {
   height: 2.2rem;
-<<<<<<< HEAD
   max-width: 30rem;
 
-=======
-  max-width: 28rem;
->>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
 }
 
 .progresslabel {
@@ -301,7 +297,6 @@ p {
   margin-left: 1rem;
 }
 
-<<<<<<< HEAD
 .quiz5container{
   justify-content: space-between;
 
@@ -315,7 +310,6 @@ p {
   width: 60%;
 }
 
-=======
 .card-img-top {
   width: 100%;
 
@@ -328,8 +322,9 @@ img.card-img-top {
 
 .lesson-card {
   border-style: solid;
+  text-align: center;
 }
->>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
+
 
 @media (max-width: 576px) {
   #breadcrumblist,
@@ -340,7 +335,6 @@ img.card-img-top {
   .footer {
     justify-content: flex-end;
   }
-<<<<<<< HEAD
 
   .progress {
     display: flex;
@@ -363,6 +357,3 @@ img.card-img-top {
   }
 
 }
-=======
-}
->>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
