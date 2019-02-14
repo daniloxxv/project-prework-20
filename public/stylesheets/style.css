@@ -280,6 +280,8 @@ img.card-img-top {
     min-width: 16rem;
     max-width: 16rem; }
   .progress-bar {
-    max-width: 16rem; } }
+    max-width: 16rem; }
+  .close fileinput-remove {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */
