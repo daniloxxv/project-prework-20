@@ -13,10 +13,14 @@ router.get("/", (req, res, next) => {
   res.render("index", { data });
 });
 
+router.get("/lessons",  ensureLogin.ensureLoggedIn(),(req, res, next) => {
+  res.redirect("/");
+});
+
 router.get("/lessons/:num", ensureLogin.ensureLoggedIn(),(req, res, next) => {
   const lessonNumber = req.params.num;
   console.log(lessonNumber)
-  if (Number(lessonNumber) > 5 || Number(lessonNumber) < 1 || /[^1-5]/.test(lessonNumber)){
+  if (!/^[1-5]$/.test(lessonNumber)){
     res.redirect('/')
   }
   const user = req.user; 
@@ -46,9 +50,7 @@ router.get("/classmates",  ensureLogin.ensureLoggedIn(),(req, res, next) => {
   res.render("classmates", { data });
 });
 
-router.get("/lessons",  ensureLogin.ensureLoggedIn(),(req, res, next) => {
-  res.redirect("/");
-});
+
 
 
 router.get("/*", (req, res, next) => {
