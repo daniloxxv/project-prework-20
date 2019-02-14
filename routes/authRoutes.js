@@ -31,7 +31,8 @@ router.post("/signup", (req, res, next) => {
   }
 
   if (/[^a-z0-9]/.test(username)) {
-    let usernameError = "Usernames can only contain lowercase letters and numbers";
+    let usernameError =
+      "Usernames can only contain lowercase letters and numbers";
     res.render("auth/signup", { usernameError });
     return;
   }
@@ -66,7 +67,7 @@ router.post("/signup", (req, res, next) => {
   //Regex validation for email (thanks to https://emailregex.com/
   else if (
     !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      req.body.email
+      req.body.email,
     )
   ) {
     let emailError = "Please introduce a valid e-mail address";
@@ -89,7 +90,7 @@ router.post("/signup", (req, res, next) => {
         password: hashPass,
         email: req.body.email,
         avatarUrl: "",
-        id: commentId
+        id: commentId,
       });
 
       newUser.save(err => {
@@ -121,19 +122,17 @@ router.post(
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
-    passReqToCallback: true
-  })
+    passReqToCallback: true,
+  }),
 );
 
 // @route   GET  /logout
 // @desc    Ends user Session
 // @access  Public
 router.get("/logout", (req, res, next) => {
-  
-  req.session.destroy( (err) => {
-    res.redirect('/login'); //Inside a callback… bulletproof!
+  req.session.destroy(err => {
+    res.redirect("/login"); //Inside a callback… bulletproof!
   });
- 
 });
 
 module.exports = router;
