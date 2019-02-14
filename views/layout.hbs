@@ -47,17 +47,21 @@
         {{#if userName}}
         <li class="nav-item right-item">
           {{#if avatar}}
-          <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img right-item"
-            style="background:url({{{avatar}}})50% 50% no-repeat;background-size: auto 100%; "></div></a>
+          <a class="nav-link" id="hello" href="/profile">
+            <div class="img-rounded profile-img right-item"
+              style="background:url({{{avatar}}})50% 50% no-repeat;background-size: auto 100%; "></div>
+          </a>
           {{else}}
-           <a class="nav-link" id="hello" href="/profile"><div class="img-rounded profile-img right-item"
-            style="background:url(/images/placeholder2.png)50% 50% no-repeat;background-size: auto 100%; "></div></a>
+          <a class="nav-link" id="hello" href="/profile">
+            <div class="img-rounded profile-img right-item"
+              style="background:url(/images/placeholder2.png)50% 50% no-repeat;background-size: auto 100%; "></div>
+          </a>
 
           {{/if}}
           <a class="nav-link" id="hello" href="/profile"> Hello, {{userName}}</a>
         </li>
         <li class="nav-item right-item logout">
-          <a class="nav-link" href="/logout">logout</a>
+          <a class="nav-link" id="log-out" href="/logout">logout</a>
         </li>
         {{else}}
         <li class="nav-item">
@@ -73,6 +77,9 @@
   <nav aria-label="breadcrumb" class="upper col-md-12">
     <ol class="breadcrumb" id="breadcrumblist">
     </ol>
+
+
+    {{#if userName}}
     <div class="progress">
       <div class="progressbg">
         <span class="progresslabel"> Progress:</span>
@@ -80,21 +87,30 @@
           aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
       </div>
     </div>
+    {{/if}}
+
   </nav>
 
   {{{body}}}
 
 
-  <footer class="footer">
-    <span class = "signoff">An Ironhack Production</span>
-    <span class="socialicons"><a href="https://es-la.facebook.com/theironhack/" class="social-link"><i
-          class="fab fa-facebook fa-2x social-fa"></i></a><a href="https://twitter.com/ironhack?lang=es"
-        class="social-link"><i class="fab fa-twitter fa-2x social-fa"></i></a><a
-        href="https://www.instagram.com/ironhack/?hl=es-la" class="social-link"><i
-          class="fab fa-instagram fa-2x social-fa"></i></a><a
-        href="https://www.linkedin.com/school/ironhack/?originalSubdomain=mx" class="social-link"><i
-          class="fab fa-linkedin fa-2x social-fa"></i></a></span>
-    <btn id="next-lesson" class = "btn btn-lg btn-warning">Go to the next lesson</btn>
+  <footer class="footer d-flex justify-content-between">
+    <span class="signoff">An Ironhack Production</span>
+    <span class="socialicons">
+      <a href="https://es-la.facebook.com/theironhack/" class="social-link">
+        <i class="fab fa-facebook fa-2x social-fa"></i>
+      </a>
+      <a href="https://twitter.com/ironhack?lang=es" class="social-link">
+        <i class="fab fa-twitter fa-2x social-fa"></i>
+      </a>
+      <a href="https://www.instagram.com/ironhack/?hl=es-la" class="social-link">
+        <i class="fab fa-instagram fa-2x social-fa"></i>
+      </a>
+      <a href="https://www.linkedin.com/school/ironhack/?originalSubdomain=mx" class="social-link">
+        <i class="fab fa-linkedin fa-2x social-fa"></i>
+      </a>
+    </span>
+    <span id="next-lesson">Go to the next lesson >></span>
 
   </footer>
 
@@ -115,6 +131,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="/javascripts/fileinput.min.js"></script>
   <script src="/javascripts/blockUI.js"></script>
+
 
 </body>
 

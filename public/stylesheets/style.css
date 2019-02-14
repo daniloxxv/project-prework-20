@@ -13,7 +13,6 @@ a {
 
 .formpage,
 .classmates,
-.home,
 .learning,
 #error {
   margin-top: 10rem;
@@ -23,7 +22,10 @@ a {
   align-items: center; }
 
 .home {
-  height: 55vh; }
+  height: 370px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .form {
   justify-content: center;
@@ -145,7 +147,7 @@ a {
   font-weight: 600;
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 20px; }
+  margin-bottom: 30px; }
 
 .commentable-section {
   margin-top: 1.2rem; }
@@ -233,7 +235,7 @@ p {
   display: none; }
 
 #next-lesson {
-  margin: 0.35rem;
+  margin: 0.25rem;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
@@ -242,6 +244,7 @@ p {
 .quizcheckbox {
   margin-left: 1rem; }
 
+<<<<<<< HEAD
 .quiz5container {
   justify-content: space-between; }
   .quiz5container label {
@@ -249,9 +252,22 @@ p {
 
 .custom-select {
   width: 60%; }
+=======
+.card-img-top {
+  width: 100%;
+  border-style: solid; }
+
+img.card-img-top {
+  height: 125px; }
+
+.lesson-card {
+  border-style: solid; }
+>>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
 
 @media (max-width: 576px) {
-  #breadcrumblist, .signoff, .socialicons {
+  #breadcrumblist,
+  .signoff,
+  .socialicons {
     display: none; }
   .footer {
     justify-content: flex-end; }

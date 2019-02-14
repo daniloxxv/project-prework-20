@@ -16,7 +16,6 @@ a {
 
 .formpage,
 .classmates,
-.home,
 .learning,
 #error {
   margin-top: 10rem;
@@ -27,7 +26,10 @@ a {
 }
 
 .home {
-  height: 55vh;
+  height: 370px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
@@ -52,7 +54,7 @@ a {
   margin-left: 1.5rem;
 }
 
-.right-item{
+.right-item {
   display: flex;
   align-self: center;
   justify-self: center;
@@ -115,8 +117,12 @@ a {
 
 .progress-bar {
   height: 2.2rem;
+<<<<<<< HEAD
   max-width: 30rem;
 
+=======
+  max-width: 28rem;
+>>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
 }
 
 .progresslabel {
@@ -176,7 +182,7 @@ a {
   font-weight: 600;
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .commentable-section {
@@ -271,7 +277,6 @@ p {
 
 .navbar {
   background-color: #1e2434;
-  
 }
 
 .reply-comment {
@@ -284,18 +289,19 @@ p {
   display: none;
 }
 
-#next-lesson{
-  margin: 0.35rem;
+#next-lesson {
+  margin: 0.25rem;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.5rem;
 }
 
-.quizcheckbox{
+.quizcheckbox {
   margin-left: 1rem;
 }
 
+<<<<<<< HEAD
 .quiz5container{
   justify-content: space-between;
 
@@ -309,14 +315,32 @@ p {
   width: 60%;
 }
 
+=======
+.card-img-top {
+  width: 100%;
+
+  border-style: solid;
+}
+
+img.card-img-top {
+  height: 125px;
+}
+
+.lesson-card {
+  border-style: solid;
+}
+>>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
 
 @media (max-width: 576px) {
-  #breadcrumblist, .signoff, .socialicons {
+  #breadcrumblist,
+  .signoff,
+  .socialicons {
     display: none;
   }
   .footer {
     justify-content: flex-end;
   }
+<<<<<<< HEAD
 
   .progress {
     display: flex;
@@ -339,3 +363,6 @@ p {
   }
 
 }
+=======
+}
+>>>>>>> 5a810b92cd1e9c700615ef75143076c9591950b2
