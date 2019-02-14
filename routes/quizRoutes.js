@@ -52,4 +52,15 @@ router.post("/quiz1", (req, res) => {
   })
  });
 
+ router.post("/quiz5", (req, res) => {
+  let username = req.user.username;
+  User.findOneAndUpdate(
+    {username: username},
+    {$set: {"quizAnswers.4": "Undefined, Object, String, Boolean, Number, and Array", "completedLessons.4":1}}
+  )
+  .then(()=>{
+    res.redirect("/lessons/5")
+  })
+ });
+
 module.exports = router;

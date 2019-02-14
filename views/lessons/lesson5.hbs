@@ -1,0 +1,137 @@
+<section class="learning">
+  <div id="commentable-container" class="container commentable-container col-md-6">
+    <h1 class="title">
+      Lesson 5: JavaScript - the final test
+    </h1>
+    <cite class="sublead">
+        Are you ready to start your Ironhack journey? Let's see if you can identify these JS data types
+    </cite>
+
+    <p data-section-id="17" class="commentable-section">
+      This final quiz will test not only your JavaScript knowledge, <strong></strong>but also your ability to find information on your own.</strong>. Looking up trustworthy online sources to find the answers to your questions is one of the most important qualities in a developer. It's never too early to start. 
+    </p>
+
+        <img src="https://memegenerator.net/img/instances/64344584.jpg"
+      alt="Neo: I know JavaScript" class="lessonpic img-fluid">
+
+    <p data-section-id="18" class="commentable-section">
+      If you have been following the past exercises, you have probably seen the <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools</a> website before. This will be an invaluable resource during your days in Ironhack. Before doing the next exercise, make sure you read the <a href="https://www.w3schools.com/js/js_datatypes.asp" target="_blank" rel="noopener noreferrer">W3Schools page on JavaScript Data Types</a>.
+    </p>
+
+
+
+
+    {{!-- This is the handlebar helper that we registered--}} {{assign 'existingComments' this.data.coment}}
+
+    <div class="quiz form-check">
+        <h3 class="quiztitle">Quiz 5: JavaScript Data Types</h3>
+        <form id='formQuiz5' action="/quiz5" method="post" class="form-group">
+          <p>
+          <label for="quiz5">Let's test your knowledge of JavaScript data types: <strong> what would be the data type of the variable <em>a</em> </strong>after each line of code?
+          </p>
+  <div class="quiz5container d-flex">
+  <label for="question1">var a</label>        
+  <select class="custom-select mb-3" name ="question1" id= "question1">
+    <option selected>Select one of the options below...</option>
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="object">Object</option>
+    <option value="number">Number</option>
+    <option value="array">Array</option>
+    <option value="undefined">Undefined</option>
+  </select>
+  </div>
+    <div class="quiz5container d-flex">
+
+  <label for="question2">a = {foo: "bar"}</label>        
+  <select class="custom-select mb-3" name ="question2" id="question2">
+    <option selected>Select one of the options below...</option>
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="object">Object</option>
+    <option value="number">Number</option>
+    <option value="array">Array</option>
+    <option value="undefined">Undefined</option>
+  </select>
+  </div>
+    <div class="quiz5container d-flex">
+
+  <label for="question3">a = typeof 100</label>        
+  <select class="custom-select mb-3" name ="question3" id ="question3">
+    <option selected>Select one of the options below...</option>
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="object">Object</option>
+    <option value="number">Number</option>
+    <option value="array">Array</option>
+    <option value="undefined">Undefined</option>
+  </select>
+  </div>
+    <div class="quiz5container d-flex">
+
+  <label for="question4">a = 10 >= 9</label>        
+  <select class="custom-select mb-3" name ="question4" id = "question4">
+    <option selected>Select one of the options below...</option>
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="object">Object</option>
+    <option value="number">Number</option>
+    <option value="array">Array</option>
+    <option value="undefined">Undefined</option>
+  </select>
+</div>
+  <div class="quiz5container d-flex">
+
+  <label for="question5">a = parseInt("100")</label>        
+  <select class="custom-select mb-3" name ="question5" id = "question5">
+    <option selected>Select one of the options below...</option>
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="object">Object</option>
+    <option value="number">Number</option>
+    <option value="array">Array</option>
+    <option value="undefined">Undefined</option>
+  </select>
+	</div>
+    <div class="quiz5container d-flex">
+
+  <label for="question6">a = "Hello".split("")</label>        
+  <select class="custom-select mb-3" name ="question6" id = "question6">
+    <option selected>Select one of the options below...</option>
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="object">Object</option>
+    <option value="number">Number</option>
+    <option value="array">Array</option>
+    <option value="undefined">Undefined</option>
+  </select>
+</div>
+<p> 
+          <input id='submitQuiz5' type="submit" value="Submit" class="btn btn-success quizinput">
+          </p>
+        </form>
+        <small id="quiz5helper" class="form-text text-muted">{{{successMessage}}}</small>
+    </div>
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/javascripts/side-comments.js"></script>
+<script src="/javascripts/test_data.js"></script>
+<script type="text/javascript">
+
+  //Existing comments
+  var existingComments = [{{{@root.existingComments}}}];
+  //Construimos el objeto del usuario actual
+  var currentUsera = {
+    id: `{{this.data.user.id}}`,
+    avatarUrl: `{{this.data.user.avatarUrl}}`,
+    authorUrl: `{{this.data.user.authorUrl}}`,
+    name: `{{this.data.user.username}}`
+  };
+</script>
+
+<script src="/javascripts/learning.js"></script>
+<script src="/javascripts/quiz5.js"></script>

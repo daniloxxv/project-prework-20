@@ -4,12 +4,10 @@ const submitQuiz4 = document.getElementById('submitQuiz4');
 submitQuiz4.addEventListener('click', e =>{
   let allowSubmit = false;
   let boxes = document.getElementById('formQuiz4').checkboxes;
-  console.log(boxes)
   let quiz4Answers = [];
   for(let i = 0; i < boxes.length; i++) {
     if (boxes[i].checked) quiz4Answers.push(boxes[i].value);
   }
-  console.log(quiz4Answers)
   if (quiz4Answers.length === 0) quiz4helper.innerHTML = "<span class = 'error'>Please select one of the options.</span>";
   else if (quiz4Answers.indexOf("option1") > -1) quiz4helper.innerHTML = "<span class = 'error'>JavaScript variables names cannot start with numbers</span>";
   else if (quiz4Answers.indexOf("option3") > -1) quiz4helper.innerHTML = "<span class = 'error'>Check the documentation again: 'class' is a reserved keyword in JS</span>";

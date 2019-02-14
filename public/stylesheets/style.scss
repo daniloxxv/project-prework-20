@@ -95,11 +95,13 @@ a {
 
 .progress {
   height: 2.2rem;
-  min-width: 35rem;
-  max-width: 35rem;
+  min-width: 30rem;
+  max-width: 30rem;
   display: flex;
-  justify-content: flex-start;
+  justify-self: flex-end;
+  justify-content: flex-end;
   align-items: center;
+  margin-right: 0;
 }
 
 .progressbg {
@@ -107,13 +109,13 @@ a {
   min-width: 30rem;
   max-width: 30rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .progress-bar {
   height: 2.2rem;
-  max-width: 28rem;
+  max-width: 30rem;
 
 }
 
@@ -294,12 +296,46 @@ p {
   margin-left: 1rem;
 }
 
+.quiz5container{
+  justify-content: space-between;
+
+  label{
+    line-height: 2.2rem;
+  }
+}
+
+.custom-select{
+
+  width: 60%;
+}
+
+
 @media (max-width: 576px) {
   #breadcrumblist, .signoff, .socialicons {
     display: none;
   }
   .footer {
     justify-content: flex-end;
+  }
+
+  .progress {
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    min-width: 16rem;
+    max-width: 16rem;
+
+  }
+  
+  .progressbg {
+
+    min-width: 16rem;
+    max-width: 16rem;
+
+  }
+  
+  .progress-bar {
+    max-width: 16rem;
   }
 
 }
