@@ -231,6 +231,10 @@ p {
 .reply-comment {
   display: none; }
 
+.btn a {
+  color: white;
+  text-decoration: none; }
+
 #hidden-input {
   display: none; }
 
@@ -239,7 +243,7 @@ p {
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
-  line-height: 2rem; }
+  line-height: 1.8rem; }
 
 .quizcheckbox {
   margin-left: 1rem; }

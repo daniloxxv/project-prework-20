@@ -26,4 +26,12 @@ else {
   console.log(error)
 }
 
+const nextButton = $("#next-lesson");
+console.log(here, here[here.length-1], here.indexOf("Lessons"), Number(here[here.length-1]),Number(here[here.length-1]) < 5 )
+if (here.indexOf("lessons") > -1 && Number(here[here.length-1]) < 5){
+  let nextLesson = Number(here[here.length-1]) + 1;
+  nextButton.html(`<a href="/lessons/${nextLesson}">Go to lesson ${nextLesson}</a>`);
+  console.log(nextLesson)
+}
+
 })

@@ -278,6 +278,11 @@ p {
   display: none;
 }
 
+.btn a{
+  color: white;
+  text-decoration: none;
+}
+
 //Avatar route
 
 #hidden-input {
@@ -289,7 +294,7 @@ p {
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
-  line-height: 2rem;
+  line-height: 1.8rem;
 }
 
 .quizcheckbox {

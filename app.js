@@ -147,7 +147,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // get user from cookie, database, etc.
   if (req.user) {
-    var currentLesson = req.user.completedLessons.indexOf(0) + 1;
+    var currentLesson = req.user.completedLessons.indexOf(0) > -1 ? req.user.completedLessons.indexOf(0) + 1 : Infinity;
     app.locals.currentLesson = currentLesson;
   } else {
     app.locals.currentLesson = 1;
@@ -158,12 +158,18 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // get user from cookie, database, etc.
   if (req.user) {
-    var nextLesson =
-      app.locals.currentLesson < 10 ? app.locals.currentLesson + 1 : false;
+    var finishedCourse = app.locals.currentLesson === Infinity;
+    app.locals.finishedCourse = finishedCourse;
+  } 
+  next();
+});
+
+app.use((req, res, next) => {
+  // get user from cookie, database, etc.
+  if (req.user) {
+    var nextLesson = app.locals.currentLesson && app.locals.currentLesson < 4 ? app.locals.currentLesson + 1 : false;
     app.locals.nextLesson = nextLesson;
-  } else {
-    app.locals.nextLesson = 1;
-  }
+  } 
   next();
 });
 

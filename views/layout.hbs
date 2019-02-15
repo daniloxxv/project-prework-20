@@ -62,7 +62,7 @@
           </a>
 
           {{/if}}
-          <a class="nav-link" id="hello" href="/profile"> Hello, {{userName}}</a>
+          <a class="nav-link" id="hello" href="/profile"> Hello, {{userName}}{{#if finishedCourse}} <b><i class="fab fa-github-alt"></i></b>{{/if}}</a>
         </li>
         <li class="nav-item right-item logout">
           <a class="nav-link" id="log-out" href="/logout">logout</a>
@@ -114,8 +114,14 @@
         <i class="fab fa-linkedin fa-2x social-fa"></i>
       </a>
     </span>
-    <btn id="next-lesson" class="btn btn-warning">Go to the next lesson </btn>
-
+    {{#if userName}}
+      {{#if nextLesson}}
+    <button id="next-lesson" class="btn btn-lg btn-warning"><a href="/lessons/{{currentLesson}}">Go to lesson {{currentLesson}}</a></button>
+    
+      {{else}}
+    <a href="/lessons/1" id="next-lesson" class="btn btn-warning">Go to lesson 1</a>
+    {{/if}}
+  {{/if}}
   </footer>
 
 
