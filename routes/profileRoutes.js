@@ -206,42 +206,13 @@ router.post("/profile", (req, res) => {
 
   //Social
   profileFields.social = {};
-  if (
-    req.body.youtube &&
-    /^(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/)/.test(
-      req.body.youtube,
-    )
-  )
-    profileFields.social.youtube = req.body.youtube;
-  if (
-    req.body.twitter &&
-    /^(https?:\/\/)?(www\.)?twitter\.com\/([a-zA-Z0-9_]+)/.test(
-      req.body.twitter,
-    )
-  )
-    profileFields.social.twitter = req.body.twitter;
-  if (
-    req.body.facebook &&
-    /^(?:https:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/.test(
-      req.body.facebook,
-    )
-  )
-    profileFields.social.facebook = req.body.facebook;
-  if (
-    req.body.linkedin &&
-    /^http(s)?:\/\/([\w]+\.)?linkedin\.com\/in\/(A-zÀ-ú-ñ 0-9 _-)\/?/.test(
-      req.body.linkedin,
-    )
-  )
-    profileFields.social.linkedin = req.body.linkedin;
-  if (
-    req.body.instagram &&
-    /^https?:\/\/(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/.test(
-      req.body.instagram,
-    )
-  )
+  if (req.body.youtube && /^(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/)/.test(req.body.youtube)) profileFields.social.youtube = req.body.youtube;
+  if (req.body.twitter &&/^(https?:\/\/)?(www\.)?twitter\.com\/([a-zA-Z0-9_]+)/.test(req.body.twitter)) profileFields.social.twitter = req.body.twitter;
+  if (req.body.facebook && /facebook\.com/.test(req.body.facebook)) profileFields.social.facebook = req.body.facebook;
+  if (req.body.linkedin &&/linkedin\.com/.test(req.body.linkedin)) profileFields.social.linkedin = req.body.linkedin;
+  if (req.body.instagram && /^https?:\/\/(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/.test(req.body.instagram)){
     profileFields.social.instagram = req.body.instagram;
-
+  }
   Profile.findOne({ user: req.user._id })
     .then(profile => {
       if (profile) {
