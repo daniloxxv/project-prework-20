@@ -7,13 +7,7 @@ $(document).ready(function() {
       title: "Logged in successfully",
       width: 300,
       padding: "3em",
-      background: "#fff url(/images/trees.png)",
-      backdrop: `
-    rgba(0,0,123,0.4)
-    url("/images/nyan-cat.gif")
-    center left
-    no-repeat
-  `,
+      background: "#fff",
       showConfirmButton: false,
       timer: 1500,
     });
