@@ -1,7 +1,7 @@
 <section class="learning">
   <div id="commentable-container" class="container commentable-container col-md-6">
     <h1 class="title">
-      CSS 101: Time to make it pretty
+      Lesson 3: Time to make it pretty
 
     </h1>
     <cite class="sublead">
@@ -9,56 +9,67 @@
     </cite>
 
     <p data-section-id="9" class="commentable-section">
-      <strong>Cascading Style Sheets (CSS)</strong> is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript
+      <strong>Cascading Style Sheets (CSS)</strong> is a style sheet language used for describing the presentation of a
+      document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside
+      HTML and JavaScript
     </p>
     <p data-section-id="10" class="commentable-section">
-      CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts. <strong>This separation can improve content accessibility, provide more flexibility</strong> and control in the specification of presentation characteristics, enable multiple web pages to share formatting by specifying the relevant CSS in a separate .css file, and reduce complexity and repetition in the structural content.
+      CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts.
+      <strong>This separation can improve content accessibility, provide more flexibility</strong> and control in the
+      specification of presentation characteristics, enable multiple web pages to share formatting by specifying the
+      relevant CSS in a separate .css file, and reduce complexity and repetition in the structural content.
     </p>
 
     <img src="https://blog.stapps.io/content/images/2016/06/css-can-do-that.jpg"
       alt="Morpheus: What if I told you... CSS could do that?" class="lessonpic img-fluid">
 
     <p data-section-id="11" class="commentable-section">
-      Separation of formatting and content also makes it feasible to present the same markup page in different styles for different rendering methods, such as on-screen, in print, by voice (via speech-based browser or screen reader), and on Braille-based tactile devices. <strong>CSS also has rules for alternate formatting if the content is accessed on a mobile device.</strong>
+      Separation of formatting and content also makes it feasible to present the same markup page in different styles
+      for different rendering methods, such as on-screen, in print, by voice (via speech-based browser or screen
+      reader), and on Braille-based tactile devices. <strong>CSS also has rules for alternate formatting if the content
+        is accessed on a mobile device.</strong>
     </p>
 
     <p data-section-id="12" class="commentable-section">
-      The name cascading comes from the specified priority scheme to determine which style rule applies if more than one rule matches a particular element. This cascading priority scheme is predictable. In addition to HTML, other markup languages support the use of CSS including XHTML, plain XML, SVG, and XUL.
-    <small class="form-text text-muted">Text from Wikipedia.com</small>
+      The name cascading comes from the specified priority scheme to determine which style rule applies if more than one
+      rule matches a particular element. This cascading priority scheme is predictable. In addition to HTML, other
+      markup languages support the use of CSS including XHTML, plain XML, SVG, and XUL.
+      <small class="form-text text-muted">Text from Wikipedia.com</small>
     </p>
 
 
     {{!-- This is the handlebar helper that we registered--}} {{assign 'existingComments' this.data.coment}}
 
     <div class="quiz form-check">
-        <h3 class="quiztitle">Quiz 3: CSS: What is it good for?</h3>
-        <form id='formQuiz3' action="/quiz3" method="post" class="form-inline">
-          <p>
-          <label for="quiz3">Let's see if you were paying attention to the text. Which of these alternatives best describes the purpose of CSS?
-          </p>
-          <p>
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="option1" value="option1" checked>
-              Describe the content and structure of a webpage
-            </label>
-          </p>
-          <p>
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="option2" value="option2">
-              Control the layout, presentation, fonts and colors in a webpage, among other style elements
-            </label>
-          </p>
-          <p>
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="option3" value="option3">
-              To give life to a webpage and execute functions according to the user's input
-            </label>
-          </p>
-          <p>
+      <h3 class="quiztitle">Quiz 3: CSS: What is it good for?</h3>
+      <form id='formQuiz3' action="/quiz3" method="post" class="form-inline">
+        <p>
+          <label for="quiz3">Let's see if you were paying attention to the text. Which of these alternatives best
+            describes the purpose of CSS?
+        </p>
+        <p>
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="option1" value="option1" checked>
+            Describe the content and structure of a webpage
+          </label>
+        </p>
+        <p>
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="option2" value="option2">
+            Control the layout, presentation, fonts and colors in a webpage, among other style elements
+          </label>
+        </p>
+        <p>
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="option3" value="option3">
+            To give life to a webpage and execute functions according to the user's input
+          </label>
+        </p>
+        <p>
           <input id='submitQuiz3' type="submit" value="Submit" class="btn btn-success quizinput">
-          </p>
-        </form>
-        <small id="quiz3helper" class="form-text text-muted">{{{successMessage}}}</small>
+        </p>
+      </form>
+      <small id="quiz3helper" class="form-text text-muted">{{{successMessage}}}</small>
     </div>
 </section>
 
