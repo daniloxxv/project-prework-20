@@ -13,7 +13,7 @@ const path = require("path");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
-flash = require("connect-flash");
+const flash = require("connect-flash");
 
 var bcrypt;
 try {
@@ -42,6 +42,7 @@ const debug = require("debug")(
 const app = express();
 
 // Middleware Setup
+app.use(flash());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -111,7 +112,7 @@ passport.use(
     });
   }),
 );
-app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -7,9 +7,11 @@ $(document).ready(function() {
   $("#btn-submit").click(function() {
   
     var fileInput = $(".file-caption-name");
+
+    debugger;
     var title = fileInput.attr("title");
 
-    if (title === "Validation Error") {
+    if (title === "Validation Error" || title === undefined) {
       return;
     } else {
       $.blockUI({
