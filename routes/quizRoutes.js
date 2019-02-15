@@ -14,7 +14,7 @@ router.post("/quiz1", (req, res) => {
     {$set: {"quizAnswers.0": answer, "completedLessons.0":1}}
   )
   .then(()=>{
-    res.redirect("/learning")
+    res.redirect("/lessons/1")
   })
  });
 

@@ -83,8 +83,8 @@ a {
   min-width: 30rem;
   max-width: 30rem;
   display: flex;
-  justify-self: flex-end;
-  justify-content: flex-end;
+  justify-self: flex-start;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 0; }
 
@@ -93,7 +93,7 @@ a {
   min-width: 30rem;
   max-width: 30rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center; }
 
 .progress-bar {
