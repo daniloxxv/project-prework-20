@@ -10,6 +10,7 @@ const bcryptSalt = 10;
 const passport = require("passport");
 const ensureLogin = require("connect-ensure-login");
 
+
 // @route   GET  /signup
 // @desc    Render the register form
 // @access  Public
@@ -78,7 +79,9 @@ router.post("/signup", (req, res, next) => {
   User.findOne({ username })
     .then(user => {
       if (user !== null) {
-        res.render("auth/signup", { message: "The username already exists" });
+        let passwordError = "The username already exists";
+        
+        res.render("auth/signup", {passwordError});
         return;
       }
 
