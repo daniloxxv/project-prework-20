@@ -10,6 +10,15 @@ submitQuiz2.addEventListener('click', e => {
     quiz2helper.innerHTML = "<span class = 'success'>You have successfully completed the exercise.</span>";
     allowSubmit = true;
   }
+
+  else if (/\<[Pp]\>/.test(quiz2answer) && !/\<\/[Pp]\>/.test(quiz2answer)){
+    quiz2helper.innerHTML = "<span class = 'error'>Don't forget to close your html tags!</span>";
+  }
+
+  else if (/\<[Pp]\>.*\<\/[Pp]\>/.test(quiz2answer)){
+    quiz2helper.innerHTML = "<span class = 'error'>Your html tags are correct, but there's something missing in your text. Did you forget the exclamation mark?</span>";
+  }
+
   else if (/\< +[Pp] +\>/.test(quiz2answer)){
     quiz2helper.innerHTML = "<span class = 'error'>Be careful: there shouldn't be spaces inside your HTML tags.</span>";
   }

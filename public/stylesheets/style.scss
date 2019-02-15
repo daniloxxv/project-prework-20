@@ -335,7 +335,13 @@ img.card-img-top {
     display: none;
   }
   .footer {
+    display: flex;
     justify-content: flex-end;
+  }
+
+  #next-lesson{
+    position: fixed;
+    right: 0.8rem;
   }
 
   .progress {
@@ -355,7 +361,46 @@ img.card-img-top {
     max-width: 16rem;
   }
 
+  .lessons-list {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+  }
+
+  .profile-img {
+    display: none;
+  }
+
+  .right-item {
+    line-height: 1rem;
+  }
+
   .close fileinput-remove {
     display: none;
   }
+
+.formpage,
+.classmates,
+.learning,
+#error {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  text-align: left;
+}
+
+.sublead{
+  margin-bottom: 1.5rem;
+  text-align:left;
+}
+
 }
