@@ -1,4 +1,6 @@
 # project-prework-20
-An educational website inspired by the Ironhack Prework
+An educational website with an inline comment system and quizzes to keep track of student progress.
 
-Made with nodejs
+![](https://i.imgur.com/QB9Kecp.png)
+
+Technologies used: MongoDB, node.js, express.js, Handlebars
